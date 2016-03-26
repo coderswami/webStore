@@ -1,0 +1,11 @@
+id;name;description;value;product_id
+6001;"color";"body color";"black";1
+6002;"width";"width of phone";"1cm";1
+6003;"cavity";"toast cavity";"2";2
+6004;"browning control";"browning control";"yes";2
+6005;"color";"color of trimmer";"grey";3
+6006;"cordless";"cord or cordless";"yes";3
+6007;"storage";"storage of x-box";"500GB";4
+6008;"wireless control";"wireless control";"yes";4
+
+

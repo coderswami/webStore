@@ -1,0 +1,5 @@
+id;NAME;DESCRIPTION;image_url;ACTIVE;catalog_id
+2001;"ELECTRONICS";"USER";"\test\pr1";1;1002
+2002;"SHOES";"USER";"\test\pr1";1;1002;1002
+2003;"APPRAREL";"USER";"\test\pr1";1;1002
+2004;"MEDIA";"USER";"\test\pr1";1;1002
