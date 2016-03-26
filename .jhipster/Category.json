@@ -1,0 +1,58 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "catalog",
+      "otherEntityName": "catalog",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "parent",
+      "otherEntityName": "category",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-many",
+      "relationshipName": "product",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "category"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160326082558",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "Category"
+}

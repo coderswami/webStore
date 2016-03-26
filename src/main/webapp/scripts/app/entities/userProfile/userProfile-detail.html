@@ -1,0 +1,78 @@
+
+<div>
+    <h2><span translate="webstoreApp.userProfile.detail.title">UserProfile</span> {{userProfile.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userProfile.email">Email</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userProfile.email}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userProfile.fname">Fname</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userProfile.fname}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userProfile.lname">Lname</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userProfile.lname}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userProfile.imageUrl">ImageUrl</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userProfile.imageUrl}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userProfile.gender">Gender</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'webstoreApp.Gender.' + userProfile.gender}}">{{userProfile.gender}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userProfile.dob">Dob</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userProfile.dob | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userProfile.authentication">authentication</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="userLogin.detail({id:userProfile.authentication.id})">{{userProfile.authentication.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

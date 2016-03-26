@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="webstoreApp.productReview.detail.title">ProductReview</span> {{productReview.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productReview.title">Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{productReview.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productReview.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{productReview.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productReview.rating">Rating</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{productReview.rating}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productReview.product">product</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:productReview.product.id})">{{productReview.product.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productReview.user">user</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="userProfile.detail({id:productReview.user.id})">{{productReview.user.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

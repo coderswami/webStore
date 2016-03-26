@@ -1,0 +1,27 @@
+{
+    "webstoreApp": {
+        "productPrice" : {
+            "home": {
+                "title": "ProductPrices",
+                "createLabel": "Create a new ProductPrice",
+                "createOrEditLabel": "Create or edit a ProductPrice",
+                "search": "Search for ProductPrice"
+            },
+            "created": "A new ProductPrice is created with identifier {{ param }}",
+            "updated": "A ProductPrice is updated with identifier {{ param }}",
+            "deleted": "A ProductPrice is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete ProductPrice {{ id }}?"
+            },
+            "detail": {
+                "title": "ProductPrice"
+            },
+            "listPrice": "ListPrice",
+            "discount": "Discount",
+            "salesPrice": "SalesPrice",
+            "active": "Active",
+            "product": "Product",
+            "currency": "Currency"
+        }
+    }
+}

@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="webstoreApp.orderHeader.detail.title">OrderHeader</span> {{orderHeader.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderHeader.type">Type</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'webstoreApp.OrderType.' + orderHeader.type}}">{{orderHeader.type}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderHeader.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'webstoreApp.Status.' + orderHeader.status}}">{{orderHeader.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderHeader.orderTotal">OrderTotal</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{orderHeader.orderTotal}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderHeader.userProfile">userProfile</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="userProfile.detail({id:orderHeader.userProfile.id})">{{orderHeader.userProfile.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderHeader.payment">payment</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="payment.detail({id:orderHeader.payment.id})">{{orderHeader.payment.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderHeader.shipment">shipment</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="shipment.detail({id:orderHeader.shipment.id})">{{orderHeader.shipment.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,11 @@
+{
+    "webstoreApp": {
+        "OrderType" : {
+            "null": "",
+            "WISHLIST": "WISHLIST",
+            "CART": "CART",
+            "NEW": "NEW",
+            "RETURN": "RETURN"
+        }
+    }
+}

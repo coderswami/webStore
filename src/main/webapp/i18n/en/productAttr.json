@@ -1,0 +1,25 @@
+{
+    "webstoreApp": {
+        "productAttr" : {
+            "home": {
+                "title": "ProductAttrs",
+                "createLabel": "Create a new ProductAttr",
+                "createOrEditLabel": "Create or edit a ProductAttr",
+                "search": "Search for ProductAttr"
+            },
+            "created": "A new ProductAttr is created with identifier {{ param }}",
+            "updated": "A ProductAttr is updated with identifier {{ param }}",
+            "deleted": "A ProductAttr is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete ProductAttr {{ id }}?"
+            },
+            "detail": {
+                "title": "ProductAttr"
+            },
+            "name": "Name",
+            "description": "Description",
+            "value": "Value",
+            "product": "Product"
+        }
+    }
+}

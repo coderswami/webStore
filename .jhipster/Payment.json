@@ -1,0 +1,36 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "type",
+      "fieldType": "PaymentType",
+      "fieldValues": "COD,GATEWAY",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "amount",
+      "fieldType": "Double",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "AVAILABLE,IN_STOCK,OUT_OF_STOCK,IN_PROCESS,CONFIRMED,PACKED,SHIPPED,COMPLETE,RETURNED,REPLACED",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160326082505",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "Payment"
+}

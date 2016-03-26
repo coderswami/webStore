@@ -1,0 +1,80 @@
+<div>
+    <h2 translate="webstoreApp.productReview.home.title">ProductReviews</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="productReview.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="webstoreApp.productReview.home.createLabel">Create new ProductReview
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'webstoreApp.productReview.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="webstoreApp.productReview.title">Title</span></th>
+                    <th><span translate="webstoreApp.productReview.description">Description</span></th>
+                    <th><span translate="webstoreApp.productReview.rating">Rating</span></th>
+                    <th><span translate="webstoreApp.productReview.product">product</span></th>
+                    <th><span translate="webstoreApp.productReview.user">user</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="productReview in productReviews track by productReview.id">
+                    <td><a ui-sref="productReview.detail({id:productReview.id})">{{productReview.id}}</a></td>
+                    <td>{{productReview.title}}</td>
+                    <td>{{productReview.description}}</td>
+                    <td>{{productReview.rating}}</td>
+                    <td>
+                        <a ui-sref="product.detail({id:productReview.product.id})">{{productReview.product.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="userProfile.detail({id:productReview.user.id})">{{productReview.user.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="productReview.detail({id:productReview.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="productReview.edit({id:productReview.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="productReview.delete({id:productReview.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

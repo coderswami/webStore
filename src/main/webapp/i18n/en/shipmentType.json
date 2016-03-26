@@ -1,0 +1,9 @@
+{
+    "webstoreApp": {
+        "ShipmentType" : {
+            "null": "",
+            "EXPRESS": "EXPRESS",
+            "NORMAL": "NORMAL"
+        }
+    }
+}

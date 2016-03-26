@@ -1,0 +1,29 @@
+{
+    "webstoreApp": {
+        "orderHeader" : {
+            "home": {
+                "title": "OrderHeaders",
+                "createLabel": "Create a new OrderHeader",
+                "createOrEditLabel": "Create or edit a OrderHeader",
+                "search": "Search for OrderHeader"
+            },
+            "created": "A new OrderHeader is created with identifier {{ param }}",
+            "updated": "A OrderHeader is updated with identifier {{ param }}",
+            "deleted": "A OrderHeader is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete OrderHeader {{ id }}?"
+            },
+            "detail": {
+                "title": "OrderHeader"
+            },
+            "type": "Type",
+            "status": "Status",
+            "orderTotal": "OrderTotal",
+            "userProfile": "UserProfile",
+            "item": "Item",
+            "payment": "Payment",
+            "shipment": "Shipment",
+            "tracking": "Tracking"
+        }
+    }
+}

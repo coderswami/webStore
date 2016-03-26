@@ -1,0 +1,9 @@
+{
+    "webstoreApp": {
+        "PaymentType" : {
+            "null": "",
+            "COD": "COD",
+            "GATEWAY": "GATEWAY"
+        }
+    }
+}

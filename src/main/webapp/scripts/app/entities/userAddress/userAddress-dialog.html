@@ -1,0 +1,110 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myUserAddressLabel" translate="webstoreApp.userAddress.home.createOrEditLabel">Create or edit a UserAddress</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="userAddress.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userAddress.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="userAddress.name"
+                    required />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userAddress.streetAddress" for="field_streetAddress">StreetAddress</label>
+            <input type="text" class="form-control" name="streetAddress" id="field_streetAddress"
+                    ng-model="userAddress.streetAddress"
+                    required />
+            <div ng-show="editForm.streetAddress.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.streetAddress.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userAddress.landmark" for="field_landmark">Landmark</label>
+            <input type="text" class="form-control" name="landmark" id="field_landmark"
+                    ng-model="userAddress.landmark"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userAddress.city" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                    ng-model="userAddress.city"
+                    required />
+            <div ng-show="editForm.city.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.city.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userAddress.pin" for="field_pin">Pin</label>
+            <input type="text" class="form-control" name="pin" id="field_pin"
+                    ng-model="userAddress.pin"
+                    required />
+            <div ng-show="editForm.pin.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.pin.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userAddress.phone" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                    ng-model="userAddress.phone"
+                    required />
+            <div ng-show="editForm.phone.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.phone.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="webstoreApp.userAddress.userProfile" for="field_userProfile">userProfile</label>
+            <select class="form-control" id="field_userProfile" name="userProfile" ng-model="userAddress.userProfile" ng-options="userProfile as userProfile.id for userProfile in userprofiles track by userProfile.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="webstoreApp.userAddress.country" for="field_country">country</label>
+            <select class="form-control" id="field_country" name="country" ng-model="userAddress.country" ng-options="country as country.id for country in countrys | orderBy:'id' track by country.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="webstoreApp.userAddress.state" for="field_state">state</label>
+            <select class="form-control" id="field_state" name="state" ng-model="userAddress.state" ng-options="state as state.id for state in states | orderBy:'id' track by state.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

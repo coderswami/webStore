@@ -1,0 +1,27 @@
+{
+    "webstoreApp": {
+        "orderItem" : {
+            "home": {
+                "title": "OrderItems",
+                "createLabel": "Créer un nouveau OrderItem",
+                "createOrEditLabel": "Créer ou éditer un OrderItem",
+                "search": "Search for OrderItem"
+            },
+            "created": "Un nouveau OrderItem a été créé avec l'identifiant {{ param }}",
+            "updated": "Le OrderItem avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le OrderItem avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le OrderItem {{ id }} ?"
+            },
+            "detail": {
+                "title": "OrderItem"
+            },
+            "quantity": "Quantity",
+            "price": "Price",
+            "status": "Status",
+            "orderHeader": "OrderHeader",
+            "product": "Product"
+        }
+    }
+}
+

@@ -1,0 +1,53 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "product",
+      "otherEntityName": "product",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-one",
+      "relationshipName": "currency",
+      "otherEntityName": "currency",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "productPrice"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "listPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "discount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "salesPrice",
+      "fieldType": "Double"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160326082501",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "ProductPrice"
+}

@@ -1,0 +1,26 @@
+{
+    "webstoreApp": {
+        "orderItem" : {
+            "home": {
+                "title": "OrderItems",
+                "createLabel": "Create a new OrderItem",
+                "createOrEditLabel": "Create or edit a OrderItem",
+                "search": "Search for OrderItem"
+            },
+            "created": "A new OrderItem is created with identifier {{ param }}",
+            "updated": "A OrderItem is updated with identifier {{ param }}",
+            "deleted": "A OrderItem is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete OrderItem {{ id }}?"
+            },
+            "detail": {
+                "title": "OrderItem"
+            },
+            "quantity": "Quantity",
+            "price": "Price",
+            "status": "Status",
+            "orderHeader": "OrderHeader",
+            "product": "Product"
+        }
+    }
+}

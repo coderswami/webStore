@@ -1,0 +1,23 @@
+{
+    "webstoreApp": {
+        "userRole" : {
+            "home": {
+                "title": "UserRoles",
+                "createLabel": "Create a new UserRole",
+                "createOrEditLabel": "Create or edit a UserRole",
+                "search": "Search for UserRole"
+            },
+            "created": "A new UserRole is created with identifier {{ param }}",
+            "updated": "A UserRole is updated with identifier {{ param }}",
+            "deleted": "A UserRole is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete UserRole {{ id }}?"
+            },
+            "detail": {
+                "title": "UserRole"
+            },
+            "role": "Role",
+            "userProfile": "UserProfile"
+        }
+    }
+}

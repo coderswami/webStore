@@ -1,0 +1,32 @@
+{
+    "webstoreApp": {
+        "userProfile" : {
+            "home": {
+                "title": "UserProfiles",
+                "createLabel": "Créer un nouveau UserProfile",
+                "createOrEditLabel": "Créer ou éditer un UserProfile",
+                "search": "Search for UserProfile"
+            },
+            "created": "Un nouveau UserProfile a été créé avec l'identifiant {{ param }}",
+            "updated": "Le UserProfile avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le UserProfile avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le UserProfile {{ id }} ?"
+            },
+            "detail": {
+                "title": "UserProfile"
+            },
+            "email": "Email",
+            "fname": "Fname",
+            "lname": "Lname",
+            "imageUrl": "ImageUrl",
+            "gender": "Gender",
+            "dob": "Dob",
+            "authentication": "Authentication",
+            "role": "Role",
+            "order": "Order",
+            "address": "Address"
+        }
+    }
+}
+

@@ -1,0 +1,17 @@
+{
+    "webstoreApp": {
+        "Status" : {
+            "null": "",
+            "AVAILABLE": "AVAILABLE",
+            "IN_STOCK": "IN_STOCK",
+            "OUT_OF_STOCK": "OUT_OF_STOCK",
+            "IN_PROCESS": "IN_PROCESS",
+            "CONFIRMED": "CONFIRMED",
+            "PACKED": "PACKED",
+            "SHIPPED": "SHIPPED",
+            "COMPLETE": "COMPLETE",
+            "RETURNED": "RETURNED",
+            "REPLACED": "REPLACED"
+        }
+    }
+}

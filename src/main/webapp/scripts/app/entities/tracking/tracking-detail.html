@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="webstoreApp.tracking.detail.title">Tracking</span> {{tracking.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.tracking.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'webstoreApp.Status.' + tracking.status}}">{{tracking.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.tracking.details">Details</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{tracking.details}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.tracking.orderHeader">orderHeader</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="orderHeader.detail({id:tracking.orderHeader.id})">{{tracking.orderHeader.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

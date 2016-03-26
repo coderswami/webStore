@@ -1,0 +1,81 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "userProfile",
+      "otherEntityName": "userProfile",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-one",
+      "relationshipName": "country",
+      "otherEntityName": "country",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "userAddress"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-one",
+      "relationshipName": "state",
+      "otherEntityName": "state",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "userAddress"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "streetAddress",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "landmark",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "city",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "pin",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "phone",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160326082553",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "UserAddress"
+}

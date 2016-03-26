@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "webStore",
+    "packageName": "com.tl.webstore",
+    "packageFolder": "com/tl/webstore",
+    "authenticationType": "xauth",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "useSass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "gulp",
+    "enableTranslation": true,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "c4b8f1255e198fac5627869e8309644583b81bfa",
+    "testFrameworks": [
+      "protractor"
+    ]
+  }
+}

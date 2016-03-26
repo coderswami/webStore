@@ -1,0 +1,23 @@
+{
+    "webstoreApp": {
+        "userLogin" : {
+            "home": {
+                "title": "UserLogins",
+                "createLabel": "Create a new UserLogin",
+                "createOrEditLabel": "Create or edit a UserLogin",
+                "search": "Search for UserLogin"
+            },
+            "created": "A new UserLogin is created with identifier {{ param }}",
+            "updated": "A UserLogin is updated with identifier {{ param }}",
+            "deleted": "A UserLogin is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete UserLogin {{ id }}?"
+            },
+            "detail": {
+                "title": "UserLogin"
+            },
+            "username": "Username",
+            "password": "Password"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "webstoreApp": {
+        "productPrice" : {
+            "home": {
+                "title": "ProductPrices",
+                "createLabel": "Créer un nouveau ProductPrice",
+                "createOrEditLabel": "Créer ou éditer un ProductPrice",
+                "search": "Search for ProductPrice"
+            },
+            "created": "Un nouveau ProductPrice a été créé avec l'identifiant {{ param }}",
+            "updated": "Le ProductPrice avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le ProductPrice avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le ProductPrice {{ id }} ?"
+            },
+            "detail": {
+                "title": "ProductPrice"
+            },
+            "listPrice": "ListPrice",
+            "discount": "Discount",
+            "salesPrice": "SalesPrice",
+            "active": "Active",
+            "product": "Product",
+            "currency": "Currency"
+        }
+    }
+}
+

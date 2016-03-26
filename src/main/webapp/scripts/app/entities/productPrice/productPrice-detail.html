@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="webstoreApp.productPrice.detail.title">ProductPrice</span> {{productPrice.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productPrice.listPrice">ListPrice</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{productPrice.listPrice}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productPrice.discount">Discount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{productPrice.discount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productPrice.salesPrice">SalesPrice</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{productPrice.salesPrice}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productPrice.active">Active</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{productPrice.active}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productPrice.product">product</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:productPrice.product.id})">{{productPrice.product.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productPrice.currency">currency</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="currency.detail({id:productPrice.currency.id})">{{productPrice.currency.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

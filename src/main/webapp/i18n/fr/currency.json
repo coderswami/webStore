@@ -1,0 +1,24 @@
+{
+    "webstoreApp": {
+        "currency" : {
+            "home": {
+                "title": "Currencys",
+                "createLabel": "Créer un nouveau Currency",
+                "createOrEditLabel": "Créer ou éditer un Currency",
+                "search": "Search for Currency"
+            },
+            "created": "Un nouveau Currency a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Currency avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Currency avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Currency {{ id }} ?"
+            },
+            "detail": {
+                "title": "Currency"
+            },
+            "code": "Code",
+            "description": "Description"
+        }
+    }
+}
+

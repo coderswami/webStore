@@ -1,0 +1,26 @@
+{
+    "webstoreApp": {
+        "productReview" : {
+            "home": {
+                "title": "ProductReviews",
+                "createLabel": "Create a new ProductReview",
+                "createOrEditLabel": "Create or edit a ProductReview",
+                "search": "Search for ProductReview"
+            },
+            "created": "A new ProductReview is created with identifier {{ param }}",
+            "updated": "A ProductReview is updated with identifier {{ param }}",
+            "deleted": "A ProductReview is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete ProductReview {{ id }}?"
+            },
+            "detail": {
+                "title": "ProductReview"
+            },
+            "title": "Title",
+            "description": "Description",
+            "rating": "Rating",
+            "product": "Product",
+            "user": "User"
+        }
+    }
+}

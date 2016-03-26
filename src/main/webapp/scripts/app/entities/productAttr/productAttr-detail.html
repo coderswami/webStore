@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="webstoreApp.productAttr.detail.title">ProductAttr</span> {{productAttr.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productAttr.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{productAttr.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productAttr.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{productAttr.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productAttr.value">Value</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{productAttr.value}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.productAttr.product">product</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:productAttr.product.id})">{{productAttr.product.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

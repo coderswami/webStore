@@ -1,0 +1,38 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-one",
+      "relationshipName": "address",
+      "otherEntityName": "userAddress",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "shipment"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "type",
+      "fieldType": "ShipmentType",
+      "fieldValues": "EXPRESS,NORMAL",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "AVAILABLE,IN_STOCK,OUT_OF_STOCK,IN_PROCESS,CONFIRMED,PACKED,SHIPPED,COMPLETE,RETURNED,REPLACED",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160326082506",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "Shipment"
+}

@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="webstoreApp.shipment.detail.title">Shipment</span> {{shipment.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.shipment.type">Type</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'webstoreApp.ShipmentType.' + shipment.type}}">{{shipment.type}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.shipment.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'webstoreApp.Status.' + shipment.status}}">{{shipment.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.shipment.address">address</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="userAddress.detail({id:shipment.address.id})">{{shipment.address.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

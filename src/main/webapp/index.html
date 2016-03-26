@@ -1,0 +1,283 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>webStore</title>
+        <meta name="description" content="">
+        <meta name="google" value="notranslate">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css assets/styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css assets/styles/main.css -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body ng-app="webstoreApp">
+        <!--[if lt IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
+        <div ui-view="navbar" ng-cloak=""></div>
+        <div class="container">
+            <div class="well" ui-view="content"></div>
+
+            <div class="footer">
+                <p translate="footer">This is your footer</p>
+            </div>
+        </div>
+
+        <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>-->
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+        <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+        <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-translate/angular-translate.js"></script>
+        <script src="bower_components/messageformat/messageformat.js"></script>
+        <script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+        <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+        <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/json3/lib/json3.js"></script>
+        <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+        <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+        <script src="bower_components/sockjs-client/dist/sockjs.js"></script>
+        <script src="bower_components/stomp-websocket/lib/stomp.min.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+
+    <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
+    <script src="scripts/app/app.js"></script>
+    <script src="scripts/app/app.constants.js"></script>
+    <script src="scripts/components/auth/auth.service.js"></script>
+    <script src="scripts/components/auth/principal.service.js"></script>
+    <script src="scripts/components/auth/authority.directive.js"></script>
+    <script src="scripts/components/auth/services/account.service.js"></script>
+    <script src="scripts/components/auth/services/activate.service.js"></script>
+    <script src="scripts/components/auth/services/password.service.js"></script>
+    <script src="scripts/components/auth/services/register.service.js"></script>
+    <script src="scripts/components/form/form.directive.js"></script>
+    <script src="scripts/components/form/maxbytes.directive.js"></script>
+    <script src="scripts/components/form/minbytes.directive.js"></script>
+    <script src="scripts/components/form/uib-pager.config.js"></script>
+    <script src="scripts/components/form/uib-pagination.config.js"></script>
+    <script src="scripts/components/admin/audits.service.js"></script>
+    <script src="scripts/components/admin/logs.service.js"></script>
+    <script src="scripts/components/admin/configuration.service.js"></script>
+    <script src="scripts/components/admin/monitoring.service.js"></script>
+    <script src="scripts/components/interceptor/auth.interceptor.js"></script>
+    <script src="scripts/components/interceptor/errorhandler.interceptor.js"></script>
+    <script src="scripts/components/interceptor/notification.interceptor.js"></script>
+    <script src="scripts/components/navbar/navbar.directive.js"></script>
+    <script src="scripts/components/navbar/navbar.controller.js"></script>
+    <script src="scripts/components/user/user.service.js"></script>
+    <script src="scripts/components/util/truncate.filter.js"></script>
+    <script src="scripts/components/util/base64.service.js"></script>
+    <script src="scripts/components/util/capitalize.filter.js"></script>
+    <script src="scripts/components/alert/alert.service.js"></script>
+    <script src="scripts/components/alert/alert.directive.js"></script>
+    <script src="scripts/components/util/parse-links.service.js"></script>
+    <script src="scripts/components/util/date-util.service.js"></script>
+    <script src="scripts/components/util/data-util.service.js"></script>
+    <script src="scripts/components/util/sort.directive.js"></script>
+    <script src="scripts/app/account/account.js"></script>
+    <script src="scripts/app/account/activate/activate.js"></script>
+    <script src="scripts/app/account/activate/activate.controller.js"></script>
+    <script src="scripts/app/account/login/login.js"></script>
+    <script src="scripts/app/account/login/login.controller.js"></script>
+    <script src="scripts/app/account/password/password.js"></script>
+    <script src="scripts/app/account/password/password.controller.js"></script>
+    <script src="scripts/app/account/password/password.directive.js"></script>
+    <script src="scripts/app/account/register/register.js"></script>
+    <script src="scripts/app/account/register/register.controller.js"></script>
+    <script src="scripts/app/account/settings/settings.js"></script>
+    <script src="scripts/app/account/settings/settings.controller.js"></script>
+    <script src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
+    <script src="scripts/app/account/reset/finish/reset.finish.js"></script>
+    <script src="scripts/app/account/reset/request/reset.request.controller.js"></script>
+    <script src="scripts/app/account/reset/request/reset.request.js"></script>
+    <script src="scripts/app/admin/admin.js"></script>
+    <script src="scripts/app/admin/audits/audits.js"></script>
+    <script src="scripts/app/admin/audits/audits.controller.js"></script>
+    <script src="scripts/app/admin/configuration/configuration.js"></script>
+    <script src="scripts/app/admin/configuration/configuration.controller.js"></script>
+    <script src="scripts/app/admin/docs/docs.js"></script>
+    <script src="scripts/app/admin/health/health.js"></script>
+    <script src="scripts/app/admin/health/health.controller.js"></script>
+    <script src="scripts/app/admin/health/health.modal.controller.js"></script>
+    <script src="scripts/app/admin/logs/logs.js"></script>
+    <script src="scripts/app/admin/logs/logs.controller.js"></script>
+    <script src="scripts/app/admin/metrics/metrics.js"></script>
+    <script src="scripts/app/admin/metrics/metrics.controller.js"></script>
+    <script src="scripts/app/admin/metrics/metrics.modal.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management-detail.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management-dialog.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management-delete-dialog.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management.js"></script>
+    <script src="scripts/app/entities/entity.js"></script>
+    <script src="scripts/app/error/error.js"></script>
+    <script src="scripts/app/main/main.js"></script>
+    <script src="scripts/app/main/main.controller.js"></script>
+    <script src="bower_components/messageformat/locale/en.js"></script>
+    <script src="bower_components/messageformat/locale/fr.js"></script>
+    <script src="scripts/components/language/language.service.js"></script>
+    <script src="scripts/components/language/language.controller.js"></script>
+    <script src="scripts/components/auth/provider/auth.xauth.service.js"></script>
+    <script src="scripts/app/admin/tracker/tracker.js"></script>
+    <script src="scripts/app/admin/tracker/tracker.controller.js"></script>
+    <script src="scripts/components/tracker/tracker.service.js"></script>
+    <script src="scripts/app/entities/userLogin/userLogin.js"></script>
+    <script src="scripts/app/entities/userLogin/userLogin.controller.js"></script>
+    <script src="scripts/app/entities/userLogin/userLogin-dialog.controller.js"></script>
+    <script src="scripts/app/entities/userLogin/userLogin-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/userLogin/userLogin-detail.controller.js"></script>
+    <script src="scripts/components/entities/userLogin/userLogin.service.js"></script>
+    <script src="scripts/components/entities/userLogin/userLogin.search.service.js"></script>
+    <script src="scripts/app/entities/userProfile/userProfile.js"></script>
+    <script src="scripts/app/entities/userProfile/userProfile.controller.js"></script>
+    <script src="scripts/app/entities/userProfile/userProfile-dialog.controller.js"></script>
+    <script src="scripts/app/entities/userProfile/userProfile-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/userProfile/userProfile-detail.controller.js"></script>
+    <script src="scripts/components/entities/userProfile/userProfile.service.js"></script>
+    <script src="scripts/components/entities/userProfile/userProfile.search.service.js"></script>
+    <script src="scripts/app/entities/userRole/userRole.js"></script>
+    <script src="scripts/app/entities/userRole/userRole.controller.js"></script>
+    <script src="scripts/app/entities/userRole/userRole-dialog.controller.js"></script>
+    <script src="scripts/app/entities/userRole/userRole-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/userRole/userRole-detail.controller.js"></script>
+    <script src="scripts/components/entities/userRole/userRole.service.js"></script>
+    <script src="scripts/components/entities/userRole/userRole.search.service.js"></script>
+    <script src="scripts/app/entities/country/country.js"></script>
+    <script src="scripts/app/entities/country/country.controller.js"></script>
+    <script src="scripts/app/entities/country/country-dialog.controller.js"></script>
+    <script src="scripts/app/entities/country/country-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/country/country-detail.controller.js"></script>
+    <script src="scripts/components/entities/country/country.service.js"></script>
+    <script src="scripts/components/entities/country/country.search.service.js"></script>
+    <script src="scripts/app/entities/state/state.js"></script>
+    <script src="scripts/app/entities/state/state.controller.js"></script>
+    <script src="scripts/app/entities/state/state-dialog.controller.js"></script>
+    <script src="scripts/app/entities/state/state-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/state/state-detail.controller.js"></script>
+    <script src="scripts/components/entities/state/state.service.js"></script>
+    <script src="scripts/components/entities/state/state.search.service.js"></script>
+    <script src="scripts/app/entities/currency/currency.js"></script>
+    <script src="scripts/app/entities/currency/currency.controller.js"></script>
+    <script src="scripts/app/entities/currency/currency-dialog.controller.js"></script>
+    <script src="scripts/app/entities/currency/currency-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/currency/currency-detail.controller.js"></script>
+    <script src="scripts/components/entities/currency/currency.service.js"></script>
+    <script src="scripts/components/entities/currency/currency.search.service.js"></script>
+    <script src="scripts/app/entities/catalog/catalog.js"></script>
+    <script src="scripts/app/entities/catalog/catalog.controller.js"></script>
+    <script src="scripts/app/entities/catalog/catalog-dialog.controller.js"></script>
+    <script src="scripts/app/entities/catalog/catalog-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/catalog/catalog-detail.controller.js"></script>
+    <script src="scripts/components/entities/catalog/catalog.service.js"></script>
+    <script src="scripts/components/entities/catalog/catalog.search.service.js"></script>
+    <script src="scripts/app/entities/category/category.js"></script>
+    <script src="scripts/app/entities/category/category.controller.js"></script>
+    <script src="scripts/app/entities/category/category-dialog.controller.js"></script>
+    <script src="scripts/app/entities/category/category-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/category/category-detail.controller.js"></script>
+    <script src="scripts/components/entities/category/category.service.js"></script>
+    <script src="scripts/components/entities/category/category.search.service.js"></script>
+    <script src="scripts/app/entities/product/product.js"></script>
+    <script src="scripts/app/entities/product/product.controller.js"></script>
+    <script src="scripts/app/entities/product/product-dialog.controller.js"></script>
+    <script src="scripts/app/entities/product/product-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/product/product-detail.controller.js"></script>
+    <script src="scripts/components/entities/product/product.service.js"></script>
+    <script src="scripts/components/entities/product/product.search.service.js"></script>
+    <script src="scripts/app/entities/productAttr/productAttr.js"></script>
+    <script src="scripts/app/entities/productAttr/productAttr.controller.js"></script>
+    <script src="scripts/app/entities/productAttr/productAttr-dialog.controller.js"></script>
+    <script src="scripts/app/entities/productAttr/productAttr-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/productAttr/productAttr-detail.controller.js"></script>
+    <script src="scripts/components/entities/productAttr/productAttr.service.js"></script>
+    <script src="scripts/components/entities/productAttr/productAttr.search.service.js"></script>
+    <script src="scripts/app/entities/productPrice/productPrice.js"></script>
+    <script src="scripts/app/entities/productPrice/productPrice.controller.js"></script>
+    <script src="scripts/app/entities/productPrice/productPrice-dialog.controller.js"></script>
+    <script src="scripts/app/entities/productPrice/productPrice-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/productPrice/productPrice-detail.controller.js"></script>
+    <script src="scripts/components/entities/productPrice/productPrice.service.js"></script>
+    <script src="scripts/components/entities/productPrice/productPrice.search.service.js"></script>
+    <script src="scripts/app/entities/productReview/productReview.js"></script>
+    <script src="scripts/app/entities/productReview/productReview.controller.js"></script>
+    <script src="scripts/app/entities/productReview/productReview-dialog.controller.js"></script>
+    <script src="scripts/app/entities/productReview/productReview-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/productReview/productReview-detail.controller.js"></script>
+    <script src="scripts/components/entities/productReview/productReview.service.js"></script>
+    <script src="scripts/components/entities/productReview/productReview.search.service.js"></script>
+    <script src="scripts/app/entities/payment/payment.js"></script>
+    <script src="scripts/app/entities/payment/payment.controller.js"></script>
+    <script src="scripts/app/entities/payment/payment-dialog.controller.js"></script>
+    <script src="scripts/app/entities/payment/payment-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/payment/payment-detail.controller.js"></script>
+    <script src="scripts/components/entities/payment/payment.service.js"></script>
+    <script src="scripts/components/entities/payment/payment.search.service.js"></script>
+    <script src="scripts/app/entities/userAddress/userAddress.js"></script>
+    <script src="scripts/app/entities/userAddress/userAddress.controller.js"></script>
+    <script src="scripts/app/entities/userAddress/userAddress-dialog.controller.js"></script>
+    <script src="scripts/app/entities/userAddress/userAddress-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/userAddress/userAddress-detail.controller.js"></script>
+    <script src="scripts/components/entities/userAddress/userAddress.service.js"></script>
+    <script src="scripts/components/entities/userAddress/userAddress.search.service.js"></script>
+    <script src="scripts/app/entities/shipment/shipment.js"></script>
+    <script src="scripts/app/entities/shipment/shipment.controller.js"></script>
+    <script src="scripts/app/entities/shipment/shipment-dialog.controller.js"></script>
+    <script src="scripts/app/entities/shipment/shipment-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/shipment/shipment-detail.controller.js"></script>
+    <script src="scripts/components/entities/shipment/shipment.service.js"></script>
+    <script src="scripts/components/entities/shipment/shipment.search.service.js"></script>
+    <script src="scripts/app/entities/orderItem/orderItem.js"></script>
+    <script src="scripts/app/entities/orderItem/orderItem.controller.js"></script>
+    <script src="scripts/app/entities/orderItem/orderItem-dialog.controller.js"></script>
+    <script src="scripts/app/entities/orderItem/orderItem-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/orderItem/orderItem-detail.controller.js"></script>
+    <script src="scripts/components/entities/orderItem/orderItem.service.js"></script>
+    <script src="scripts/components/entities/orderItem/orderItem.search.service.js"></script>
+    <script src="scripts/app/entities/tracking/tracking.js"></script>
+    <script src="scripts/app/entities/tracking/tracking.controller.js"></script>
+    <script src="scripts/app/entities/tracking/tracking-dialog.controller.js"></script>
+    <script src="scripts/app/entities/tracking/tracking-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/tracking/tracking-detail.controller.js"></script>
+    <script src="scripts/components/entities/tracking/tracking.service.js"></script>
+    <script src="scripts/components/entities/tracking/tracking.search.service.js"></script>
+    <script src="scripts/app/entities/orderHeader/orderHeader.js"></script>
+    <script src="scripts/app/entities/orderHeader/orderHeader.controller.js"></script>
+    <script src="scripts/app/entities/orderHeader/orderHeader-dialog.controller.js"></script>
+    <script src="scripts/app/entities/orderHeader/orderHeader-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/orderHeader/orderHeader-detail.controller.js"></script>
+    <script src="scripts/components/entities/orderHeader/orderHeader.service.js"></script>
+    <script src="scripts/components/entities/orderHeader/orderHeader.search.service.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+    "webstoreApp": {
+        "userAddress" : {
+            "home": {
+                "title": "UserAddresss",
+                "createLabel": "Create a new UserAddress",
+                "createOrEditLabel": "Create or edit a UserAddress",
+                "search": "Search for UserAddress"
+            },
+            "created": "A new UserAddress is created with identifier {{ param }}",
+            "updated": "A UserAddress is updated with identifier {{ param }}",
+            "deleted": "A UserAddress is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete UserAddress {{ id }}?"
+            },
+            "detail": {
+                "title": "UserAddress"
+            },
+            "name": "Name",
+            "streetAddress": "StreetAddress",
+            "landmark": "Landmark",
+            "city": "City",
+            "pin": "Pin",
+            "phone": "Phone",
+            "userProfile": "UserProfile",
+            "country": "Country",
+            "state": "State"
+        }
+    }
+}

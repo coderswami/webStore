@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span translate="webstoreApp.userAddress.detail.title">UserAddress</span> {{userAddress.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userAddress.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userAddress.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userAddress.streetAddress">StreetAddress</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userAddress.streetAddress}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userAddress.landmark">Landmark</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userAddress.landmark}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userAddress.city">City</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userAddress.city}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userAddress.pin">Pin</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userAddress.pin}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userAddress.phone">Phone</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{userAddress.phone}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userAddress.userProfile">userProfile</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="userProfile.detail({id:userAddress.userProfile.id})">{{userAddress.userProfile.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userAddress.country">country</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="country.detail({id:userAddress.country.id})">{{userAddress.country.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.userAddress.state">state</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="state.detail({id:userAddress.state.id})">{{userAddress.state.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

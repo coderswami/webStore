@@ -1,0 +1,25 @@
+{
+    "webstoreApp": {
+        "tracking" : {
+            "home": {
+                "title": "Trackings",
+                "createLabel": "Créer un nouveau Tracking",
+                "createOrEditLabel": "Créer ou éditer un Tracking",
+                "search": "Search for Tracking"
+            },
+            "created": "Un nouveau Tracking a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Tracking avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Tracking avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Tracking {{ id }} ?"
+            },
+            "detail": {
+                "title": "Tracking"
+            },
+            "status": "Status",
+            "details": "Details",
+            "orderHeader": "OrderHeader"
+        }
+    }
+}
+

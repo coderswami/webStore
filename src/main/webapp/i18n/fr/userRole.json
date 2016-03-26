@@ -1,0 +1,24 @@
+{
+    "webstoreApp": {
+        "userRole" : {
+            "home": {
+                "title": "UserRoles",
+                "createLabel": "Créer un nouveau UserRole",
+                "createOrEditLabel": "Créer ou éditer un UserRole",
+                "search": "Search for UserRole"
+            },
+            "created": "Un nouveau UserRole a été créé avec l'identifiant {{ param }}",
+            "updated": "Le UserRole avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le UserRole avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le UserRole {{ id }} ?"
+            },
+            "detail": {
+                "title": "UserRole"
+            },
+            "role": "Role",
+            "userProfile": "UserProfile"
+        }
+    }
+}
+

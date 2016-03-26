@@ -1,0 +1,24 @@
+{
+    "webstoreApp": {
+        "userLogin" : {
+            "home": {
+                "title": "UserLogins",
+                "createLabel": "Créer un nouveau UserLogin",
+                "createOrEditLabel": "Créer ou éditer un UserLogin",
+                "search": "Search for UserLogin"
+            },
+            "created": "Un nouveau UserLogin a été créé avec l'identifiant {{ param }}",
+            "updated": "Le UserLogin avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le UserLogin avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le UserLogin {{ id }} ?"
+            },
+            "detail": {
+                "title": "UserLogin"
+            },
+            "username": "Username",
+            "password": "Password"
+        }
+    }
+}
+

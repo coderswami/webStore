@@ -1,0 +1,25 @@
+{
+    "webstoreApp": {
+        "payment" : {
+            "home": {
+                "title": "Payments",
+                "createLabel": "Créer un nouveau Payment",
+                "createOrEditLabel": "Créer ou éditer un Payment",
+                "search": "Search for Payment"
+            },
+            "created": "Un nouveau Payment a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Payment avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Payment avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Payment {{ id }} ?"
+            },
+            "detail": {
+                "title": "Payment"
+            },
+            "type": "Type",
+            "amount": "Amount",
+            "status": "Status"
+        }
+    }
+}
+

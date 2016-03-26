@@ -1,0 +1,32 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "orderHeader",
+      "otherEntityName": "orderHeader",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "AVAILABLE,IN_STOCK,OUT_OF_STOCK,IN_PROCESS,CONFIRMED,PACKED,SHIPPED,COMPLETE,RETURNED,REPLACED",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "details",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160326082507",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "Tracking"
+}

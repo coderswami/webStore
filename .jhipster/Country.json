@@ -1,0 +1,40 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "state",
+      "otherEntityName": "state",
+      "otherEntityRelationshipName": "country"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "catalog",
+      "otherEntityName": "catalog",
+      "otherEntityRelationshipName": "country"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "isdCode",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160326082554",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "Country"
+}

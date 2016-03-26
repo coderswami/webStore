@@ -1,0 +1,88 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "category",
+      "otherEntityName": "category",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "attribute",
+      "otherEntityName": "productAttr",
+      "otherEntityRelationshipName": "product"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-many",
+      "relationshipName": "price",
+      "otherEntityName": "productPrice",
+      "otherEntityRelationshipName": "product"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipType": "one-to-many",
+      "relationshipName": "review",
+      "otherEntityName": "productReview",
+      "otherEntityRelationshipName": "product"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "imageUrl",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "inventory",
+      "fieldType": "Integer",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "AVAILABLE,IN_STOCK,OUT_OF_STOCK,IN_PROCESS,CONFIRMED,PACKED,SHIPPED,COMPLETE,RETURNED,REPLACED",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160326082559",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "Product"
+}

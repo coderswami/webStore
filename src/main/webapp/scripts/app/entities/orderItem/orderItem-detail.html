@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="webstoreApp.orderItem.detail.title">OrderItem</span> {{orderItem.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderItem.quantity">Quantity</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{orderItem.quantity}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderItem.price">Price</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{orderItem.price}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderItem.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'webstoreApp.Status.' + orderItem.status}}">{{orderItem.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderItem.orderHeader">orderHeader</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="orderHeader.detail({id:orderItem.orderHeader.id})">{{orderItem.orderHeader.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="webstoreApp.orderItem.product">product</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:orderItem.product.id})">{{orderItem.product.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

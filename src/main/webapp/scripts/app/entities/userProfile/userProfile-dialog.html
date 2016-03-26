@@ -1,0 +1,80 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myUserProfileLabel" translate="webstoreApp.userProfile.home.createOrEditLabel">Create or edit a UserProfile</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="userProfile.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userProfile.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="userProfile.email"
+                    required />
+            <div ng-show="editForm.email.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.email.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userProfile.fname" for="field_fname">Fname</label>
+            <input type="text" class="form-control" name="fname" id="field_fname"
+                    ng-model="userProfile.fname"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userProfile.lname" for="field_lname">Lname</label>
+            <input type="text" class="form-control" name="lname" id="field_lname"
+                    ng-model="userProfile.lname"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userProfile.imageUrl" for="field_imageUrl">ImageUrl</label>
+            <input type="text" class="form-control" name="imageUrl" id="field_imageUrl"
+                    ng-model="userProfile.imageUrl"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userProfile.gender" for="field_gender">Gender</label>
+            <select class="form-control" name="gender" ng-model="userProfile.gender" id="field_gender">
+                <option value="MALE" translate="webstoreApp.Gender.MALE">MALE</option>
+                <option value="FEMALE" translate="webstoreApp.Gender.FEMALE">FEMALE</option>
+                <option value="OTHER" translate="webstoreApp.Gender.OTHER">OTHER</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.userProfile.dob" for="field_dob">Dob</label>
+                <div class="input-group">
+                    <input id="field_dob" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="userProfile.dob" is-open="datePickerForDob.status.opened"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="datePickerForDobOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="webstoreApp.userProfile.authentication" for="field_authentication">authentication</label>
+            <select class="form-control" id="field_authentication" name="authentication" ng-model="userProfile.authentication" ng-options="userLogin as userLogin.id for userLogin in authentications | orderBy:'id' track by userLogin.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

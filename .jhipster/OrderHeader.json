@@ -1,0 +1,76 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "userProfile",
+      "otherEntityName": "userProfile",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "item",
+      "otherEntityName": "orderItem",
+      "otherEntityRelationshipName": "orderHeader"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-one",
+      "relationshipName": "payment",
+      "otherEntityName": "payment",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "orderHeader"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipType": "one-to-one",
+      "relationshipName": "shipment",
+      "otherEntityName": "shipment",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "orderHeader"
+    },
+    {
+      "relationshipId": 5,
+      "relationshipType": "one-to-many",
+      "relationshipName": "tracking",
+      "otherEntityName": "tracking",
+      "otherEntityRelationshipName": "orderHeader"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "type",
+      "fieldType": "OrderType",
+      "fieldValues": "WISHLIST,CART,NEW,RETURN",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "AVAILABLE,IN_STOCK,OUT_OF_STOCK,IN_PROCESS,CONFIRMED,PACKED,SHIPPED,COMPLETE,RETURNED,REPLACED",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "orderTotal",
+      "fieldType": "Double",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160326083043",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "OrderHeader"
+}

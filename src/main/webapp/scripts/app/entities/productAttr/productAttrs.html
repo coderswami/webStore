@@ -1,0 +1,76 @@
+<div>
+    <h2 translate="webstoreApp.productAttr.home.title">ProductAttrs</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="productAttr.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="webstoreApp.productAttr.home.createLabel">Create new ProductAttr
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'webstoreApp.productAttr.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="webstoreApp.productAttr.name">Name</span></th>
+                    <th><span translate="webstoreApp.productAttr.description">Description</span></th>
+                    <th><span translate="webstoreApp.productAttr.value">Value</span></th>
+                    <th><span translate="webstoreApp.productAttr.product">product</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="productAttr in productAttrs track by productAttr.id">
+                    <td><a ui-sref="productAttr.detail({id:productAttr.id})">{{productAttr.id}}</a></td>
+                    <td>{{productAttr.name}}</td>
+                    <td>{{productAttr.description}}</td>
+                    <td>{{productAttr.value}}</td>
+                    <td>
+                        <a ui-sref="product.detail({id:productAttr.product.id})">{{productAttr.product.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="productAttr.detail({id:productAttr.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="productAttr.edit({id:productAttr.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="productAttr.delete({id:productAttr.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

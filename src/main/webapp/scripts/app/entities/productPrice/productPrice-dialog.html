@@ -1,0 +1,78 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myProductPriceLabel" translate="webstoreApp.productPrice.home.createOrEditLabel">Create or edit a ProductPrice</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="productPrice.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.productPrice.listPrice" for="field_listPrice">ListPrice</label>
+            <input type="number" class="form-control" name="listPrice" id="field_listPrice"
+                    ng-model="productPrice.listPrice"
+                    required />
+            <div ng-show="editForm.listPrice.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.listPrice.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.listPrice.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.productPrice.discount" for="field_discount">Discount</label>
+            <input type="number" class="form-control" name="discount" id="field_discount"
+                    ng-model="productPrice.discount"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.productPrice.salesPrice" for="field_salesPrice">SalesPrice</label>
+            <input type="number" class="form-control" name="salesPrice" id="field_salesPrice"
+                    ng-model="productPrice.salesPrice"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.productPrice.active" for="field_active">Active</label>
+            <input type="checkbox" class="form-control" name="active" id="field_active"
+                    ng-model="productPrice.active"
+                     />
+            <div ng-show="editForm.active.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.active.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="webstoreApp.productPrice.product" for="field_product">product</label>
+            <select class="form-control" id="field_product" name="product" ng-model="productPrice.product" ng-options="product as product.id for product in products track by product.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="webstoreApp.productPrice.currency" for="field_currency">currency</label>
+            <select class="form-control" id="field_currency" name="currency" ng-model="productPrice.currency" ng-options="currency as currency.id for currency in currencys | orderBy:'id' track by currency.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

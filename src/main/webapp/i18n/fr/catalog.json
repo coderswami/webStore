@@ -1,0 +1,27 @@
+{
+    "webstoreApp": {
+        "catalog" : {
+            "home": {
+                "title": "Catalogs",
+                "createLabel": "Créer un nouveau Catalog",
+                "createOrEditLabel": "Créer ou éditer un Catalog",
+                "search": "Search for Catalog"
+            },
+            "created": "Un nouveau Catalog a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Catalog avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Catalog avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Catalog {{ id }} ?"
+            },
+            "detail": {
+                "title": "Catalog"
+            },
+            "name": "Name",
+            "description": "Description",
+            "active": "Active",
+            "country": "Country",
+            "category": "Category"
+        }
+    }
+}
+

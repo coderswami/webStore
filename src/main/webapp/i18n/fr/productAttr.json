@@ -1,0 +1,26 @@
+{
+    "webstoreApp": {
+        "productAttr" : {
+            "home": {
+                "title": "ProductAttrs",
+                "createLabel": "Créer un nouveau ProductAttr",
+                "createOrEditLabel": "Créer ou éditer un ProductAttr",
+                "search": "Search for ProductAttr"
+            },
+            "created": "Un nouveau ProductAttr a été créé avec l'identifiant {{ param }}",
+            "updated": "Le ProductAttr avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le ProductAttr avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le ProductAttr {{ id }} ?"
+            },
+            "detail": {
+                "title": "ProductAttr"
+            },
+            "name": "Name",
+            "description": "Description",
+            "value": "Value",
+            "product": "Product"
+        }
+    }
+}
+

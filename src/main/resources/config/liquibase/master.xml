@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082550_added_entity_UserLogin.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082551_added_entity_UserProfile.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082552_added_entity_UserRole.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082554_added_entity_Country.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082555_added_entity_State.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082556_added_entity_Currency.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082557_added_entity_Catalog.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082558_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082559_added_entity_Product.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082500_added_entity_ProductAttr.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082501_added_entity_ProductPrice.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082502_added_entity_ProductReview.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082505_added_entity_Payment.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082553_added_entity_UserAddress.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082506_added_entity_Shipment.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082504_added_entity_OrderItem.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326082507_added_entity_Tracking.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160326083043_added_entity_OrderHeader.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+</databaseChangeLog>

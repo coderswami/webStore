@@ -1,0 +1,75 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-one",
+      "relationshipName": "authentication",
+      "otherEntityName": "userLogin",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "userProfile"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "role",
+      "otherEntityName": "userRole",
+      "otherEntityRelationshipName": "userProfile"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-many",
+      "relationshipName": "order",
+      "otherEntityName": "orderHeader",
+      "otherEntityRelationshipName": "userProfile"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipType": "one-to-many",
+      "relationshipName": "address",
+      "otherEntityName": "userAddress",
+      "otherEntityRelationshipName": "userProfile"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "fname",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "lname",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValues": "MALE,FEMALE,OTHER"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "dob",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "changelogDate": "20160326082551",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "UserProfile"
+}

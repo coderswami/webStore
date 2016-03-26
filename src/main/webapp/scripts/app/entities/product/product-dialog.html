@@ -1,0 +1,117 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myProductLabel" translate="webstoreApp.product.home.createOrEditLabel">Create or edit a Product</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="product.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.product.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="product.name"
+                    required />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.product.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="product.description"
+                    required />
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.product.imageUrl" for="field_imageUrl">ImageUrl</label>
+            <input type="text" class="form-control" name="imageUrl" id="field_imageUrl"
+                    ng-model="product.imageUrl"
+                    required />
+            <div ng-show="editForm.imageUrl.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.imageUrl.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.product.inventory" for="field_inventory">Inventory</label>
+            <input type="number" class="form-control" name="inventory" id="field_inventory"
+                    ng-model="product.inventory"
+                    required />
+            <div ng-show="editForm.inventory.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.inventory.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.inventory.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.product.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="product.status" id="field_status" required>
+                <option value="AVAILABLE" translate="webstoreApp.Status.AVAILABLE">AVAILABLE</option>
+                <option value="IN_STOCK" translate="webstoreApp.Status.IN_STOCK">IN_STOCK</option>
+                <option value="OUT_OF_STOCK" translate="webstoreApp.Status.OUT_OF_STOCK">OUT_OF_STOCK</option>
+                <option value="IN_PROCESS" translate="webstoreApp.Status.IN_PROCESS">IN_PROCESS</option>
+                <option value="CONFIRMED" translate="webstoreApp.Status.CONFIRMED">CONFIRMED</option>
+                <option value="PACKED" translate="webstoreApp.Status.PACKED">PACKED</option>
+                <option value="SHIPPED" translate="webstoreApp.Status.SHIPPED">SHIPPED</option>
+                <option value="COMPLETE" translate="webstoreApp.Status.COMPLETE">COMPLETE</option>
+                <option value="RETURNED" translate="webstoreApp.Status.RETURNED">RETURNED</option>
+                <option value="REPLACED" translate="webstoreApp.Status.REPLACED">REPLACED</option>
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstoreApp.product.active" for="field_active">Active</label>
+            <input type="checkbox" class="form-control" name="active" id="field_active"
+                    ng-model="product.active"
+                     />
+            <div ng-show="editForm.active.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.active.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="webstoreApp.product.category" for="field_category">category</label>
+            <select class="form-control" id="field_category" name="category" ng-model="product.category" ng-options="category as category.id for category in categorys track by category.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

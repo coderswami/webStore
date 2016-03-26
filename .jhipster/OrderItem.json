@@ -1,0 +1,52 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "orderHeader",
+      "otherEntityName": "orderHeader",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-one",
+      "relationshipName": "product",
+      "otherEntityName": "product",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "orderItem"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "quantity",
+      "fieldType": "Integer",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "price",
+      "fieldType": "Double",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "AVAILABLE,IN_STOCK,OUT_OF_STOCK,IN_PROCESS,CONFIRMED,PACKED,SHIPPED,COMPLETE,RETURNED,REPLACED",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160326082504",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "OrderItem"
+}

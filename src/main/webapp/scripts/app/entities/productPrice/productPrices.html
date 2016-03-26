@@ -1,0 +1,82 @@
+<div>
+    <h2 translate="webstoreApp.productPrice.home.title">ProductPrices</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="productPrice.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="webstoreApp.productPrice.home.createLabel">Create new ProductPrice
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'webstoreApp.productPrice.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="webstoreApp.productPrice.listPrice">ListPrice</span></th>
+                    <th><span translate="webstoreApp.productPrice.discount">Discount</span></th>
+                    <th><span translate="webstoreApp.productPrice.salesPrice">SalesPrice</span></th>
+                    <th><span translate="webstoreApp.productPrice.active">Active</span></th>
+                    <th><span translate="webstoreApp.productPrice.product">product</span></th>
+                    <th><span translate="webstoreApp.productPrice.currency">currency</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="productPrice in productPrices track by productPrice.id">
+                    <td><a ui-sref="productPrice.detail({id:productPrice.id})">{{productPrice.id}}</a></td>
+                    <td>{{productPrice.listPrice}}</td>
+                    <td>{{productPrice.discount}}</td>
+                    <td>{{productPrice.salesPrice}}</td>
+                    <td>{{productPrice.active}}</td>
+                    <td>
+                        <a ui-sref="product.detail({id:productPrice.product.id})">{{productPrice.product.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="currency.detail({id:productPrice.currency.id})">{{productPrice.currency.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="productPrice.detail({id:productPrice.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="productPrice.edit({id:productPrice.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="productPrice.delete({id:productPrice.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
