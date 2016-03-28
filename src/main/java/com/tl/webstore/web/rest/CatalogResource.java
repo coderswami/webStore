@@ -2,7 +2,9 @@ package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.tl.webstore.domain.Catalog;
+import com.tl.webstore.domain.Country;
 import com.tl.webstore.repository.CatalogRepository;
+import com.tl.webstore.repository.CountryRepository;
 import com.tl.webstore.repository.search.CatalogSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -32,13 +34,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class CatalogResource {
 
     private final Logger log = LoggerFactory.getLogger(CatalogResource.class);
-        
+
+    @Inject
+    private CountryRepository countryRepository;
+
     @Inject
     private CatalogRepository catalogRepository;
-    
+
     @Inject
     private CatalogSearchRepository catalogSearchRepository;
-    
+
     /**
      * POST  /catalogs -> Create a new catalog.
      */
@@ -99,6 +104,24 @@ public class CatalogResource {
     public ResponseEntity<Catalog> getCatalog(@PathVariable Long id) {
         log.debug("REST request to get Catalog : {}", id);
         Catalog catalog = catalogRepository.findOne(id);
+        return Optional.ofNullable(catalog)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
+     * GET  /catalogs/active/:country -> get the "active and country" catalog.
+     */
+    @RequestMapping(value = "/catalogs/active/{countryCode}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Catalog> getCatalogByActiveAndCountry(@PathVariable String countryCode) {
+        log.debug("REST request to get Catalog : {}", countryCode);
+        Country country = countryRepository.findByCode(countryCode);
+        Catalog catalog = catalogRepository.findByActiveAndCountry(true, country);
         return Optional.ofNullable(catalog)
             .map(result -> new ResponseEntity<>(
                 result,

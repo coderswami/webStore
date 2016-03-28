@@ -34,9 +34,7 @@
             </column>
             
             <column name="product_id" type="bigint"/>
-            <column name="currency_id" type="bigint">
-                <constraints unique="true"/>
-            </column>
+            <column name="currency_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         

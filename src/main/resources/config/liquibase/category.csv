@@ -1,5 +1,4 @@
-id;NAME;DESCRIPTION;image_url;ACTIVE;catalog_id
-2001;"ELECTRONICS";"USER";"\test\pr1";1;1002
-2002;"SHOES";"USER";"\test\pr1";1;1002;1002
-2003;"APPRAREL";"USER";"\test\pr1";1;1002
-2004;"MEDIA";"USER";"\test\pr1";1;1002
+id;name;description;image_url;active;catalog_id
+1;"Phones";"Phones";"/assets/images/nexus6-on.jpg";1;2
+2;"Tablets";"Tablets";"/assets/images/nexus9-on.jpg";1;2
+3;"Wearables";"Wearables";"/assets/images/wear-silver-on.jpg";1;2

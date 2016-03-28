@@ -42,7 +42,8 @@ public class ProductPrice implements Serializable {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "currency_id")
     private Currency currency;
 
     public Long getId() {

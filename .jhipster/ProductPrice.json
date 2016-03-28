@@ -9,12 +9,10 @@
     },
     {
       "relationshipId": 2,
-      "relationshipType": "one-to-one",
+      "relationshipType": "many-to-one",
       "relationshipName": "currency",
       "otherEntityName": "currency",
-      "otherEntityField": "id",
-      "ownerSide": true,
-      "otherEntityRelationshipName": "productPrice"
+      "otherEntityField": "id"
     }
   ],
   "fields": [

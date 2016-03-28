@@ -1,3 +1,4 @@
 id;code;name;isd_code
-001;"IND";"INDIA";"+91"
-002;"USA";"USA";"+1"
+1;"ZZ";"Global";"0"
+2;"IN";"India";"91"
+3;"US";"United States";"1"

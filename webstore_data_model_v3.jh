@@ -1,0 +1,229 @@
+//USER Data Model
+entity UserLogin {
+  username String required,
+  password String required
+}
+
+entity UserProfile {
+  email String required,
+  fname String,
+  lname String,
+  imageUrl String,
+  gender Gender,
+  dob LocalDate
+}
+
+enum Gender {
+  MALE, FEMALE, OTHER
+}
+
+entity UserRole {
+  role String required
+}
+
+relationship OneToOne {
+  UserProfile{authentication} to UserLogin
+}
+
+relationship OneToMany {
+  UserProfile{role} to UserRole
+}
+
+relationship OneToMany {
+  UserProfile{order} to OrderHeader
+}
+
+entity UserAddress {
+  name String required,
+  streetAddress String required,
+  landmark String,
+  city String required,
+  pin String required,
+  phone String required
+}
+
+relationship OneToOne {
+  UserAddress{country} to Country
+}
+
+relationship OneToOne {
+  UserAddress{state} to State
+}
+
+relationship OneToMany {
+  UserProfile{address} to UserAddress
+}
+//CATALOG Data Model
+entity Country {
+  code String,
+  name String,
+  isdCode String
+}
+
+entity State {
+  code String,
+  name String
+}
+
+entity Currency {
+  code String required,
+  description String
+}
+
+relationship OneToMany {
+  Country{state} to State
+}
+
+entity Catalog {
+  name String required,
+  description String required,
+  active Boolean required
+}
+
+relationship OneToMany {
+  Country{catalog} to Catalog
+}
+
+entity Category {
+  name String required,
+  description String,
+  imageUrl String,
+  active Boolean required
+}
+
+relationship OneToMany {
+  Catalog{category} to Category
+}
+
+relationship ManyToOne {
+  Category{parent} to Category
+}
+
+entity Product {
+  name String required,
+  description String required,
+  imageUrl String required,
+  inventory Integer required,
+  status Status required,
+  active Boolean required
+}
+
+relationship OneToMany {
+  Category{product} to Product
+}
+
+entity ProductAttr {
+  name String required,
+  description String,
+  value String required
+}
+
+relationship OneToMany {
+  Product{attribute} to ProductAttr
+}
+
+entity ProductPrice {
+  listPrice Double required,
+  discount Double,
+  salesPrice Double,
+  active Boolean required
+}
+
+relationship OneToMany {
+  Product{price} to ProductPrice
+}
+
+relationship ManyToOne {
+  ProductPrice{currency} to Currency
+}
+
+entity ProductReview {
+  title String required,
+  description String required,
+  rating Double required
+}
+
+relationship OneToOne {
+  ProductReview{user} to UserProfile
+}
+
+relationship OneToMany {
+  Product{review} to ProductReview
+}
+//ORDER Data Model
+entity OrderHeader {
+  type OrderType required,
+  status Status required,
+  orderTotal Double required
+}
+
+enum OrderType {
+  WISHLIST, CART, NEW, RETURN
+}
+
+entity OrderItem {
+  quantity Integer required,
+  price Double required,
+  status Status required
+}
+
+relationship OneToMany {
+  OrderHeader{item} to OrderItem
+}
+
+relationship OneToOne {
+  OrderItem{product} to Product
+}
+
+relationship OneToOne {
+  OrderHeader{payment} to Payment
+}
+
+relationship OneToOne {
+  OrderHeader{shipment} to Shipment
+}
+
+relationship OneToMany {
+  OrderHeader{tracking} to Tracking
+}
+
+entity Payment {
+  type PaymentType required,
+  amount Double required,
+  status Status required
+}
+
+enum PaymentType {
+  COD, GATEWAY
+}
+
+entity Shipment {
+  type ShipmentType required,
+  status Status required
+}
+
+enum ShipmentType {
+  EXPRESS, NORMAL
+}
+
+relationship OneToOne {
+  Shipment{address} to UserAddress
+}
+
+entity Tracking {
+  status Status required,
+  details String
+}
+
+enum Status {
+  AVAILABLE,
+  IN_STOCK,
+  OUT_OF_STOCK,
+  IN_PROCESS,
+  CONFIRMED,
+  PACKED,
+  SHIPPED,
+  COMPLETE,
+  RETURNED,
+  REPLACED
+}

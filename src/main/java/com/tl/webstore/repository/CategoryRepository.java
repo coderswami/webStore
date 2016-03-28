@@ -1,5 +1,6 @@
 package com.tl.webstore.repository;
 
+import com.tl.webstore.domain.Catalog;
 import com.tl.webstore.domain.Category;
 
 import org.springframework.data.jpa.repository.*;
@@ -11,4 +12,5 @@ import java.util.List;
  */
 public interface CategoryRepository extends JpaRepository<Category,Long> {
 
+    List<Category> findByCatalog(Catalog catalog);
 }

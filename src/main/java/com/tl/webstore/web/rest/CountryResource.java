@@ -31,13 +31,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class CountryResource {
 
     private final Logger log = LoggerFactory.getLogger(CountryResource.class);
-        
+
     @Inject
     private CountryRepository countryRepository;
-    
+
     @Inject
     private CountrySearchRepository countrySearchRepository;
-    
+
     /**
      * POST  /countrys -> Create a new country.
      */
@@ -98,6 +98,23 @@ public class CountryResource {
     public ResponseEntity<Country> getCountry(@PathVariable Long id) {
         log.debug("REST request to get Country : {}", id);
         Country country = countryRepository.findOne(id);
+        return Optional.ofNullable(country)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
+     * GET  /countrys/:id -> get the "id" country.
+     */
+    @RequestMapping(value = "/countrys/code/{code}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Country> getCountryByCode(@PathVariable String code) {
+        log.debug("REST request to get Country : {}", code);
+        Country country = countryRepository.findByCode(code);
         return Optional.ofNullable(country)
             .map(result -> new ResponseEntity<>(
                 result,

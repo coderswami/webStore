@@ -1,7 +1,9 @@
 package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.tl.webstore.domain.Category;
 import com.tl.webstore.domain.Product;
+import com.tl.webstore.repository.CategoryRepository;
 import com.tl.webstore.repository.ProductRepository;
 import com.tl.webstore.repository.search.ProductSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
@@ -32,13 +34,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ProductResource {
 
     private final Logger log = LoggerFactory.getLogger(ProductResource.class);
-        
+
+    @Inject
+    private CategoryRepository categoryRepository;
+
     @Inject
     private ProductRepository productRepository;
-    
+
     @Inject
     private ProductSearchRepository productSearchRepository;
-    
+
     /**
      * POST  /products -> Create a new product.
      */
@@ -87,7 +92,7 @@ public class ProductResource {
     public List<Product> getAllProducts() {
         log.debug("REST request to get all Products");
         return productRepository.findAll();
-            }
+    }
 
     /**
      * GET  /products/:id -> get the "id" product.
@@ -104,6 +109,19 @@ public class ProductResource {
                 result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
+     * GET  /products/category/:categoryId -> get all the products.
+     */
+    @RequestMapping(value = "/products/category/{categoryId}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Product> getProductsByCategory(@PathVariable Long categoryId) {
+        log.debug("REST request to get Products : {}", categoryId);
+        Category category = categoryRepository.findOne(categoryId);
+        return productRepository.findByCategory(category);
     }
 
     /**

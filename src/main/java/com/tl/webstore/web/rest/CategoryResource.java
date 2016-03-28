@@ -1,7 +1,9 @@
 package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.tl.webstore.domain.Catalog;
 import com.tl.webstore.domain.Category;
+import com.tl.webstore.repository.CatalogRepository;
 import com.tl.webstore.repository.CategoryRepository;
 import com.tl.webstore.repository.search.CategorySearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
@@ -32,13 +34,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class CategoryResource {
 
     private final Logger log = LoggerFactory.getLogger(CategoryResource.class);
-        
+
+    @Inject
+    private CatalogRepository catalogRepository;
+
     @Inject
     private CategoryRepository categoryRepository;
-    
+
     @Inject
     private CategorySearchRepository categorySearchRepository;
-    
+
     /**
      * POST  /categorys -> Create a new category.
      */
@@ -87,7 +92,7 @@ public class CategoryResource {
     public List<Category> getAllCategorys() {
         log.debug("REST request to get all Categorys");
         return categoryRepository.findAll();
-            }
+    }
 
     /**
      * GET  /categorys/:id -> get the "id" category.
@@ -104,6 +109,19 @@ public class CategoryResource {
                 result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
+     * GET  /categorys/catalog/:catalogId -> get the "id" category.
+     */
+    @RequestMapping(value = "/categorys/catalog/{catalogId}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Category> getCategorysByCatalog(@PathVariable Long catalogId) {
+        log.debug("REST request to get Categorys : {}", catalogId);
+        Catalog catalog = catalogRepository.findOne(catalogId);
+        return categoryRepository.findByCatalog(catalog);
     }
 
     /**
