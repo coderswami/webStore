@@ -51,6 +51,11 @@
 		separator=";" tableName="product_attr">
 		</loadData>
 	</changeSet>
+	<changeSet id="1435300051323-3" author="abhishek">
+		<loadData encoding="UTF-8" file="config/liquibase/orderheader.csv" 
+		separator=";" tableName="order_header">
+		</loadData>
+	</changeSet>
 	<!-- <changeSet id="1435300051321-3" author="abhishek">
 		<loadData encoding="UTF-8" file="config/liquibase/users.csv" 
 		separator=";" tableName="jhi_user">

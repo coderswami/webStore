@@ -1,8 +1,10 @@
 package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.tl.webstore.domain.Product;
 import com.tl.webstore.domain.ProductPrice;
 import com.tl.webstore.repository.ProductPriceRepository;
+import com.tl.webstore.repository.ProductRepository;
 import com.tl.webstore.repository.search.ProductPriceSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -38,6 +40,9 @@ public class ProductPriceResource {
     
     @Inject
     private ProductPriceSearchRepository productPriceSearchRepository;
+    @Inject
+    private ProductRepository productRepository;
+    
     
     /**
      * POST  /productPrices -> Create a new productPrice.
@@ -50,6 +55,19 @@ public class ProductPriceResource {
         log.debug("REST request to save ProductPrice : {}", productPrice);
         if (productPrice.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("productPrice", "idexists", "A new productPrice cannot already have an ID")).body(null);
+        }
+        ProductPrice savedProductPrice = productPriceRepository.findOne(productPrice.getProduct().getId());
+        if(savedProductPrice != null)
+        {
+        	System.out.println("saved product is::"+ " "+ savedProductPrice);
+            Boolean active = savedProductPrice.getActive();
+            System.out.println("boolean value is:"+ " "+ active);
+            if(productPrice.getProduct().getId()==savedProductPrice.getProduct().getId()&& savedProductPrice.getActive()==true)
+            {
+            	System.out.println("Product price id::"+" "+ productPrice.getProduct().getId()+" savedproduct id::"+" "+ savedProductPrice.getId());
+            	productPrice.setActive(false);
+            	
+            }
         }
         ProductPrice result = productPriceRepository.save(productPrice);
         productPriceSearchRepository.save(result);
@@ -100,6 +118,26 @@ public class ProductPriceResource {
         log.debug("REST request to get ProductPrice : {}", id);
         ProductPrice productPrice = productPriceRepository.findOne(id);
         return Optional.ofNullable(productPrice)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+    
+    /**
+     * GET  /productPrices/:productId -> get the "productId" productPrice.
+     */
+    @RequestMapping(value = "/productPrices/active/{productId}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<ProductPrice> getProductActivePriceByProductId(@PathVariable Long productId) {
+        log.debug("REST request to get ProductActivePrice : {}", productId);
+        Product product = productRepository.findOne(productId);
+        System.out.println("product is:"+ ""+ product);
+        ProductPrice ListProductPrice = productPriceRepository.findByActiveAndProduct(true, product);
+        System.out.println("List of product price is::"+ ""+ ListProductPrice);
+        return Optional.ofNullable(ListProductPrice)
             .map(result -> new ResponseEntity<>(
                 result,
                 HttpStatus.OK))
