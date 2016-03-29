@@ -1,19 +1,20 @@
 id;name;description;image_url;inventory;status;active;category_id
-1;"Jack&Jones Jeans";"Jack&Jones Mens Jeans";"/assets/images/jack&jones-1-regularfit-detailview-men-jeans.jpeg";10;AVAILABLE;1;1
-2;"Levis Jeans";"Jeans Fit";"/assets/images/levis-1-slim-fit-men-jeans-detailview.jpeg";8;AVAILABLE;1;1
-3;"Levis Jeans Slim Fit";"Mens Jeans Slim Fit";"/assets/images/levis-2-slim-fit-men-jeans-detailview.jpeg";7;AVAILABLE;1;1
+1;"Jack&Jones";"Jack&Jones Mens Jeans";"/assets/images/jack&jones-1-regularfit-detailview-men-jeans.jpeg";10;AVAILABLE;1;1
+2;"Levis";"Jeans Fit";"/assets/images/levis-1-slim-fit-men-jeans-detailview.jpeg";8;AVAILABLE;1;1
+3;"Levis";"Mens Jeans Slim Fit";"/assets/images/levis-2-slim-fit-men-jeans-detailview.jpeg";7;AVAILABLE;1;1
 4;"Pepe Jeans";"Mens Jeans Slim Fit";"/assets/images/pepe-jeans-detailview.jpeg";7;AVAILABLE;1;1
-5;"Levis Shirt";"Mens Shirt";"/assets/images/levis-1-shirt-checked-men-detailview.jpeg";15;AVAILABLE;1;2
-6;"Levis";"Mens Check Shirt";"/assets/images/levis-2-shirt-checked-men-detailview.jpeg";15;AVAILABLE;1;2
-7;"Levis";"Mens Slim Fit Shirt";"/assets/images/men-shirt-peter-england-detailview.jpeg";15;AVAILABLE;1;2
+5;"Levis";"Mens Shirt";"/assets/images/levis-1-shirt-checked-men-detailview.jpeg";10;AVAILABLE;1;2
+6;"Levis";"Mens Check Shirt";"/assets/images/levis-2-shirt-checked-men-detailview.jpeg";11;AVAILABLE;1;2
+7;"Levis";"Mens Slim Fit Shirt";"/assets/images/men-shirt-peter-england-detailview.jpeg";17;AVAILABLE;1;2
 8;"Puma";"Mens Apple Cut Shirt";"/assets/images/puma-shirt-men-detailview.jpeg";15;AVAILABLE;1;2
-9;"Adidas";"Mens Cap";"/assets/images/adidas-cap-detailview.jpeg";15;AVAILABLE;1;5
-10;"Adidas";"Womens Cap ";"/assets/images/adidas-cap-2-detailview.jpeg";15;AVAILABLE;1;5
-11;"Adidas Fancy";"Mens Fancy Cap";"/assets/images/adidas-cap-3-detailview.jpeg";15;AVAILABLE;1;5
-12;"Tommy Hilfiger";"Mens Belts";"/assets/images/fastrack-detailview.jpeg";15;AVAILABLE;1;4
-13;"Woodland";"Mens Woodland Belts";"/assets/images/woodland-1-belt-detailview.jpeg";15;AVAILABLE;1;4
-14;"Puma";"Mens Puma Belts";"/assets/images/puma-belt-detailview.jpeg";15;AVAILABLE;1;4
-15;"Tommy Hilfiger Fancy";"Womens Belts Fancy";"/assets/images/tommy-hilfiger-belt-detailview.jpeg";15;AVAILABLE;1;4
+9;"Fastrack";"Mens Wrist Watch Chain Strap";"/assets/images/fastrack-detailview.jpeg";16;AVAILABLE;1;5
+10;"Rolex";"Mens Gold Plated Watch ";"/assets/images/rolex-deatilview.jpeg";15;AVAILABLE;1;5
+11;"Timex";"Mens Fancy Watch";"/assets/images/timex-watch-detailview.jpeg";15;AVAILABLE;1;5
+12;"Timex";"Womens Fancy Watch";"/assets/images/timex-women-watch-detailview.jpeg";15;AVAILABLE;1;5
+13;"Gucci";"Mens Deo Pleasant";"/assets/images/gucci-deo-detailview.jpeg";16;AVAILABLE;1;4
+14;"Gucci";"Mens Black Collection Deo";"/assets/images/gucci-black-detailview.jpeg";14;AVAILABLE;1;4
+15;"Polo";"Mens Polo Green Deo";"/assets/images/polo-green-deo-detailview.jpeg";11;AVAILABLE;1;4
+16;"Polo";"Womens Polo Deo";"/assets/images/polo-red-detailview.jpeg";10;AVAILABLE;1;4
 
 
 
