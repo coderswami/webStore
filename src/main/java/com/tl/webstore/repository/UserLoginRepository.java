@@ -10,5 +10,6 @@ import java.util.List;
  * Spring Data JPA repository for the UserLogin entity.
  */
 public interface UserLoginRepository extends JpaRepository<UserLogin,Long> {
+	UserLogin findByUsername(String username);
 
 }

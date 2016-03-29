@@ -56,18 +56,11 @@ public class ProductPriceResource {
         if (productPrice.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("productPrice", "idexists", "A new productPrice cannot already have an ID")).body(null);
         }
-        ProductPrice savedProductPrice = productPriceRepository.findOne(productPrice.getProduct().getId());
-        if(savedProductPrice != null)
-        {
-        	System.out.println("saved product is::"+ " "+ savedProductPrice);
-            Boolean active = savedProductPrice.getActive();
-            System.out.println("boolean value is:"+ " "+ active);
-            if(productPrice.getProduct().getId()==savedProductPrice.getProduct().getId()&& savedProductPrice.getActive()==true)
-            {
-            	System.out.println("Product price id::"+" "+ productPrice.getProduct().getId()+" savedproduct id::"+" "+ savedProductPrice.getId());
-            	productPrice.setActive(false);
-
-            }
+        List<ProductPrice> getAllProductPrice = productPriceRepository.findAll();
+        for(ProductPrice ListProductPrice : getAllProductPrice) {
+        	if(ListProductPrice.getProduct().getId() == productPrice.getProduct().getId() && ListProductPrice.getActive()== true) {
+        		productPrice.setActive(false);
+        	}
         }
         ProductPrice result = productPriceRepository.save(productPrice);
         productPriceSearchRepository.save(result);

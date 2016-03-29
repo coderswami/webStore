@@ -10,5 +10,6 @@ import java.util.List;
  * Spring Data JPA repository for the UserProfile entity.
  */
 public interface UserProfileRepository extends JpaRepository<UserProfile,Long> {
+	UserProfile findByEmail(String email);
 
 }

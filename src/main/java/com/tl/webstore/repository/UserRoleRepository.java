@@ -10,5 +10,6 @@ import java.util.List;
  * Spring Data JPA repository for the UserRole entity.
  */
 public interface UserRoleRepository extends JpaRepository<UserRole,Long> {
+	List<UserRole> findByUserProfileId(Long id);
 
 }
