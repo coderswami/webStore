@@ -2,7 +2,11 @@ package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.tl.webstore.domain.UserLogin;
+import com.tl.webstore.domain.UserProfile;
+import com.tl.webstore.domain.UserRole;
 import com.tl.webstore.repository.UserLoginRepository;
+import com.tl.webstore.repository.UserProfileRepository;
+import com.tl.webstore.repository.UserRoleRepository;
 import com.tl.webstore.repository.search.UserLoginSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -38,6 +42,12 @@ public class UserLoginResource {
     
     @Inject
     private UserLoginSearchRepository userLoginSearchRepository;
+    
+    @Inject
+    private UserProfileRepository userProfileRepository;
+    
+    @Inject
+    private UserRoleRepository userRoleRepository;
     
     /**
      * POST  /userLogins -> Create a new userLogin.
@@ -90,15 +100,27 @@ public class UserLoginResource {
             }
 
     /**
-     * GET  /userLogins/:id -> get the "id" userLogin.
+     * GET  /userLogins/:id -> get the "userName" userLogin.
      */
-    @RequestMapping(value = "/userLogins/{id}",
+    @RequestMapping(value = "/userLogins/{username}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<UserLogin> getUserLogin(@PathVariable Long id) {
-        log.debug("REST request to get UserLogin : {}", id);
-        UserLogin userLogin = userLoginRepository.findOne(id);
+    public ResponseEntity<UserLogin> getUserLogin(@PathVariable String username) {
+        log.debug("REST request to get UserLoginResources : {}", username);
+        UserLogin userLogin = userLoginRepository.findByUsername(username);
+        if(userLogin != null)
+        {
+        UserProfile userProfile = userProfileRepository.findByEmail(userLogin.getUsername());
+        System.out.println("geting user profile is::"+ ""+userProfile);
+        UserLogin isAutthentication = userProfile.getAuthentication();
+        System.out.println("user profile authentication is::"+ " "+ isAutthentication);
+        if(isAutthentication != null)
+        {
+        	List<UserRole> ListUserRole = userRoleRepository.findByUserProfileId(userProfile.getId());
+        	System.out.println("user role is::"+ " "+ ListUserRole);
+        }
+        }
         return Optional.ofNullable(userLogin)
             .map(result -> new ResponseEntity<>(
                 result,
