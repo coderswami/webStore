@@ -3,6 +3,7 @@ package com.tl.webstore.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.tl.webstore.domain.ProductAttr;
 import com.tl.webstore.repository.ProductAttrRepository;
+import com.tl.webstore.repository.ProductRepository;
 import com.tl.webstore.repository.search.ProductAttrSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -32,13 +33,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ProductAttrResource {
 
     private final Logger log = LoggerFactory.getLogger(ProductAttrResource.class);
-        
+
+    @Inject
+    private ProductRepository productRepository;
+
     @Inject
     private ProductAttrRepository productAttrRepository;
-    
+
     @Inject
     private ProductAttrSearchRepository productAttrSearchRepository;
-    
+
     /**
      * POST  /productAttrs -> Create a new productAttr.
      */
@@ -87,7 +91,19 @@ public class ProductAttrResource {
     public List<ProductAttr> getAllProductAttrs() {
         log.debug("REST request to get all ProductAttrs");
         return productAttrRepository.findAll();
-            }
+    }
+
+    /**
+     * GET  /productAttrs/product/:productId -> get all the productAttrs.
+     */
+    @RequestMapping(value = "/productAttrs/product/{productId}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<ProductAttr> getProductAttrsByProduct(@PathVariable Long productId) {
+        log.debug("REST request to get all ProductAttrs : {}", productId);
+        return productAttrRepository.findByProduct(productRepository.findOne(productId));
+    }
 
     /**
      * GET  /productAttrs/:id -> get the "id" productAttr.

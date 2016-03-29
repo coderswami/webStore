@@ -1,5 +1,6 @@
 package com.tl.webstore.repository;
 
+import com.tl.webstore.domain.Product;
 import com.tl.webstore.domain.ProductAttr;
 
 import org.springframework.data.jpa.repository.*;
@@ -11,4 +12,5 @@ import java.util.List;
  */
 public interface ProductAttrRepository extends JpaRepository<ProductAttr,Long> {
 
+    List<ProductAttr> findByProduct(Product product);
 }

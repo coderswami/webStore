@@ -1,8 +1,12 @@
 package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.tl.webstore.domain.OrderHeader;
 import com.tl.webstore.domain.OrderItem;
+import com.tl.webstore.domain.enumeration.OrderType;
+import com.tl.webstore.repository.OrderHeaderRepository;
 import com.tl.webstore.repository.OrderItemRepository;
+import com.tl.webstore.repository.search.OrderHeaderSearchRepository;
 import com.tl.webstore.repository.search.OrderItemSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -32,13 +36,19 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class OrderItemResource {
 
     private final Logger log = LoggerFactory.getLogger(OrderItemResource.class);
-        
+
+    @Inject
+    private OrderHeaderRepository orderHeaderRepository;
+
+    @Inject
+    private OrderHeaderSearchRepository orderHeaderSearchRepository;
+
     @Inject
     private OrderItemRepository orderItemRepository;
-    
+
     @Inject
     private OrderItemSearchRepository orderItemSearchRepository;
-    
+
     /**
      * POST  /orderItems -> Create a new orderItem.
      */
@@ -53,6 +63,15 @@ public class OrderItemResource {
         }
         OrderItem result = orderItemRepository.save(orderItem);
         orderItemSearchRepository.save(result);
+        OrderHeader orderHeader = result.getOrderHeader();
+        List<OrderItem> items = orderItemRepository.findByOrderHeader(orderHeader);
+        Double orderTotal = 0.0;
+        for (int i = 0; i < items.size(); i++) {
+            orderTotal += items.get(i).getPrice();
+        }
+        orderHeader.setOrderTotal(orderTotal);
+        orderHeader = orderHeaderRepository.save(orderHeader);
+        orderHeaderSearchRepository.save(orderHeader);
         return ResponseEntity.created(new URI("/api/orderItems/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("orderItem", result.getId().toString()))
             .body(result);
@@ -72,6 +91,15 @@ public class OrderItemResource {
         }
         OrderItem result = orderItemRepository.save(orderItem);
         orderItemSearchRepository.save(result);
+        OrderHeader orderHeader = result.getOrderHeader();
+        List<OrderItem> items = orderItemRepository.findByOrderHeader(orderHeader);
+        Double orderTotal = 0.0;
+        for (int i = 0; i < items.size(); i++) {
+            orderTotal += items.get(i).getPrice();
+        }
+        orderHeader.setOrderTotal(orderTotal);
+        orderHeader = orderHeaderRepository.save(orderHeader);
+        orderHeaderSearchRepository.save(orderHeader);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("orderItem", orderItem.getId().toString()))
             .body(result);
@@ -87,7 +115,19 @@ public class OrderItemResource {
     public List<OrderItem> getAllOrderItems() {
         log.debug("REST request to get all OrderItems");
         return orderItemRepository.findAll();
-            }
+    }
+
+    /**
+     * GET  /orderItems/orderHeader/:orderHeaderId -> get all the orderItems.
+     */
+    @RequestMapping(value = "/orderItems/orderHeader/{orderHeaderId}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<OrderItem> getOrderItemsByOrderHeader(@PathVariable Long orderHeaderId) {
+        log.debug("REST request to get all OrderItems", orderHeaderId);
+        return orderItemRepository.findByOrderHeader(orderHeaderRepository.findOne(orderHeaderId));
+    }
 
     /**
      * GET  /orderItems/:id -> get the "id" orderItem.
@@ -115,8 +155,21 @@ public class OrderItemResource {
     @Timed
     public ResponseEntity<Void> deleteOrderItem(@PathVariable Long id) {
         log.debug("REST request to delete OrderItem : {}", id);
+        OrderHeader orderHeader = orderItemRepository.findOne(id).getOrderHeader();
         orderItemRepository.delete(id);
         orderItemSearchRepository.delete(id);
+        List<OrderItem> items = orderItemRepository.findByOrderHeader(orderHeader);
+        if(items.size() > 0) {
+            Double orderTotal = 0.0;
+            for (int i = 0; i < items.size(); i++) {
+                orderTotal += items.get(i).getPrice();
+            }
+            orderHeader.setOrderTotal(orderTotal);
+            orderHeaderRepository.save(orderHeader);
+        }else {
+            orderHeaderRepository.delete(orderHeader.getId());
+            orderHeaderSearchRepository.delete(orderHeader.getId());
+        }
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("orderItem", id.toString())).build();
     }
 

@@ -1,7 +1,9 @@
 package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.tl.webstore.domain.OrderHeader;
 import com.tl.webstore.domain.Shipment;
+import com.tl.webstore.repository.OrderHeaderRepository;
 import com.tl.webstore.repository.ShipmentRepository;
 import com.tl.webstore.repository.search.ShipmentSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
@@ -32,43 +34,51 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ShipmentResource {
 
     private final Logger log = LoggerFactory.getLogger(ShipmentResource.class);
-        
+
+    @Inject
+    private OrderHeaderRepository orderHeaderRepository;
+
     @Inject
     private ShipmentRepository shipmentRepository;
-    
+
     @Inject
     private ShipmentSearchRepository shipmentSearchRepository;
-    
+
     /**
-     * POST  /shipments -> Create a new shipment.
+     * POST  /shipments/order/:orderId -> Create a new shipment.
      */
-    @RequestMapping(value = "/shipments",
+    @RequestMapping(value = "/shipments/order/{orderId}",
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Shipment> createShipment(@Valid @RequestBody Shipment shipment) throws URISyntaxException {
+    public ResponseEntity<Shipment> createShipment(@Valid @RequestBody Shipment shipment, @PathVariable Long orderId) throws URISyntaxException {
         log.debug("REST request to save Shipment : {}", shipment);
+        log.debug("For Order : {}", orderId);
         if (shipment.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("shipment", "idexists", "A new shipment cannot already have an ID")).body(null);
         }
         Shipment result = shipmentRepository.save(shipment);
         shipmentSearchRepository.save(result);
+        OrderHeader order = orderHeaderRepository.findOne(orderId);
+        order.setShipment(result);
+        orderHeaderRepository.save(order);
         return ResponseEntity.created(new URI("/api/shipments/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("shipment", result.getId().toString()))
             .body(result);
     }
 
     /**
-     * PUT  /shipments -> Updates an existing shipment.
+     * PUT  /shipments/order/:orderId -> Updates an existing shipment.
      */
-    @RequestMapping(value = "/shipments",
+    @RequestMapping(value = "/shipments/order/{orderId}",
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Shipment> updateShipment(@Valid @RequestBody Shipment shipment) throws URISyntaxException {
+    public ResponseEntity<Shipment> updateShipment(@Valid @RequestBody Shipment shipment, @PathVariable Long orderId) throws URISyntaxException {
         log.debug("REST request to update Shipment : {}", shipment);
+        log.debug("For Order : {}", orderId);
         if (shipment.getId() == null) {
-            return createShipment(shipment);
+            return createShipment(shipment, orderId);
         }
         Shipment result = shipmentRepository.save(shipment);
         shipmentSearchRepository.save(result);

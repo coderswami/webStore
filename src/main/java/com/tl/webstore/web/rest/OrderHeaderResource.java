@@ -2,11 +2,13 @@ package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.tl.webstore.domain.OrderHeader;
+import com.tl.webstore.domain.enumeration.OrderType;
 import com.tl.webstore.repository.OrderHeaderRepository;
 import com.tl.webstore.repository.search.OrderHeaderSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -32,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class OrderHeaderResource {
 
     private final Logger log = LoggerFactory.getLogger(OrderHeaderResource.class);
-        
+
     @Inject
     private OrderHeaderRepository orderHeaderRepository;
-    
+
     @Inject
     private OrderHeaderSearchRepository orderHeaderSearchRepository;
-    
+
     /**
      * POST  /orderHeaders -> Create a new orderHeader.
      */
@@ -46,7 +49,11 @@ public class OrderHeaderResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<OrderHeader> createOrderHeader(@Valid @RequestBody OrderHeader orderHeader) throws URISyntaxException {
+    public ResponseEntity<OrderHeader> createOrderHeader(@Valid @RequestBody OrderHeader orderHeader, HttpServletRequest request) throws URISyntaxException {
+        System.out.println(request.getRemoteUser());
+        System.out.println(request.getRemoteAddr());
+        System.out.println(request.getRemoteHost());
+        System.out.println(request.getRemotePort());
         log.debug("REST request to save OrderHeader : {}", orderHeader);
         if (orderHeader.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("orderHeader", "idexists", "A new orderHeader cannot already have an ID")).body(null);
@@ -65,10 +72,10 @@ public class OrderHeaderResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<OrderHeader> updateOrderHeader(@Valid @RequestBody OrderHeader orderHeader) throws URISyntaxException {
+    public ResponseEntity<OrderHeader> updateOrderHeader(@Valid @RequestBody OrderHeader orderHeader, HttpServletRequest request) throws URISyntaxException {
         log.debug("REST request to update OrderHeader : {}", orderHeader);
         if (orderHeader.getId() == null) {
-            return createOrderHeader(orderHeader);
+            return createOrderHeader(orderHeader, request);
         }
         OrderHeader result = orderHeaderRepository.save(orderHeader);
         orderHeaderSearchRepository.save(result);
@@ -88,6 +95,18 @@ public class OrderHeaderResource {
         log.debug("REST request to get all OrderHeaders");
         return orderHeaderRepository.findAll();
             }
+
+    /**
+     * GET  /orderHeaders/type/:orderType -> get all the orderHeaders.
+     */
+    @RequestMapping(value = "/orderHeaders/type/{orderType}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<OrderHeader> getOrderHeadersByOrderType(@PathVariable String orderType) {
+        log.debug("REST request to get OrderHeaders : {}", orderType);
+        return orderHeaderRepository.findByType(OrderType.valueOf(orderType));
+    }
 
     /**
      * GET  /orderHeaders/:id -> get the "id" orderHeader.

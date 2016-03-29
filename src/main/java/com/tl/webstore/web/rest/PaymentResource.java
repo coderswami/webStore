@@ -1,7 +1,9 @@
 package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.tl.webstore.domain.OrderHeader;
 import com.tl.webstore.domain.Payment;
+import com.tl.webstore.repository.OrderHeaderRepository;
 import com.tl.webstore.repository.PaymentRepository;
 import com.tl.webstore.repository.search.PaymentSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
@@ -32,43 +34,51 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class PaymentResource {
 
     private final Logger log = LoggerFactory.getLogger(PaymentResource.class);
-        
+
+    @Inject
+    private OrderHeaderRepository orderHeaderRepository;
+
     @Inject
     private PaymentRepository paymentRepository;
-    
+
     @Inject
     private PaymentSearchRepository paymentSearchRepository;
-    
+
     /**
-     * POST  /payments -> Create a new payment.
+     * POST  /payments/order/:orderId -> Create a new payment for order.
      */
-    @RequestMapping(value = "/payments",
+    @RequestMapping(value = "/payments/order/{orderId}",
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Payment> createPayment(@Valid @RequestBody Payment payment) throws URISyntaxException {
+    public ResponseEntity<Payment> createPayment(@Valid @RequestBody Payment payment, @PathVariable Long orderId) throws URISyntaxException {
         log.debug("REST request to save Payment : {}", payment);
+        log.debug("For Order : {}", orderId);
         if (payment.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("payment", "idexists", "A new payment cannot already have an ID")).body(null);
         }
         Payment result = paymentRepository.save(payment);
         paymentSearchRepository.save(result);
+        OrderHeader order = orderHeaderRepository.findOne(orderId);
+        order.setPayment(result);
+        orderHeaderRepository.save(order);
         return ResponseEntity.created(new URI("/api/payments/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("payment", result.getId().toString()))
             .body(result);
     }
 
     /**
-     * PUT  /payments -> Updates an existing payment.
+     * PUT  /payments/order/:orderId -> Updates an existing payment.
      */
-    @RequestMapping(value = "/payments",
+    @RequestMapping(value = "/payments/order/{orderId}",
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Payment> updatePayment(@Valid @RequestBody Payment payment) throws URISyntaxException {
+    public ResponseEntity<Payment> updatePayment(@Valid @RequestBody Payment payment, @PathVariable Long orderId) throws URISyntaxException {
         log.debug("REST request to update Payment : {}", payment);
+        log.debug("For Order : {}", orderId);
         if (payment.getId() == null) {
-            return createPayment(payment);
+            return createPayment(payment, orderId);
         }
         Payment result = paymentRepository.save(payment);
         paymentSearchRepository.save(result);
