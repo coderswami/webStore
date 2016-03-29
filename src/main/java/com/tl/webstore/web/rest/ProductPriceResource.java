@@ -34,16 +34,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ProductPriceResource {
 
     private final Logger log = LoggerFactory.getLogger(ProductPriceResource.class);
-        
+
     @Inject
     private ProductPriceRepository productPriceRepository;
-    
+
     @Inject
     private ProductPriceSearchRepository productPriceSearchRepository;
     @Inject
     private ProductRepository productRepository;
-    
-    
+
+
     /**
      * POST  /productPrices -> Create a new productPrice.
      */
@@ -57,10 +57,8 @@ public class ProductPriceResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("productPrice", "idexists", "A new productPrice cannot already have an ID")).body(null);
         }
         List<ProductPrice> getAllProductPrice = productPriceRepository.findAll();
-        for(ProductPrice ListProductPrice : getAllProductPrice)
-        {
-        	if(ListProductPrice.getProduct().getId() == productPrice.getProduct().getId() && ListProductPrice.getActive()== true)
-        	{
+        for(ProductPrice ListProductPrice : getAllProductPrice) {
+        	if(ListProductPrice.getProduct().getId() == productPrice.getProduct().getId() && ListProductPrice.getActive()== true) {
         		productPrice.setActive(false);
         	}
         }
@@ -118,11 +116,11 @@ public class ProductPriceResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
+
     /**
-     * GET  /productPrices/:productId -> get the "productId" productPrice.
+     * GET  /productPrices/product/:productId -> get the "productId" productPrice.
      */
-    @RequestMapping(value = "/productPrices/active/{productId}",
+    @RequestMapping(value = "/productPrices/product/{productId}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed

@@ -53,6 +53,8 @@ public class OrderHeaderResourceIntTest {
 
     private static final Double DEFAULT_ORDER_TOTAL = 1D;
     private static final Double UPDATED_ORDER_TOTAL = 2D;
+    private static final String DEFAULT_COOKIE = "AAAAA";
+    private static final String UPDATED_COOKIE = "BBBBB";
 
     @Inject
     private OrderHeaderRepository orderHeaderRepository;
@@ -87,6 +89,7 @@ public class OrderHeaderResourceIntTest {
         orderHeader.setType(DEFAULT_TYPE);
         orderHeader.setStatus(DEFAULT_STATUS);
         orderHeader.setOrderTotal(DEFAULT_ORDER_TOTAL);
+        orderHeader.setCookie(DEFAULT_COOKIE);
     }
 
     @Test
@@ -108,6 +111,7 @@ public class OrderHeaderResourceIntTest {
         assertThat(testOrderHeader.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testOrderHeader.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testOrderHeader.getOrderTotal()).isEqualTo(DEFAULT_ORDER_TOTAL);
+        assertThat(testOrderHeader.getCookie()).isEqualTo(DEFAULT_COOKIE);
     }
 
     @Test
@@ -177,7 +181,8 @@ public class OrderHeaderResourceIntTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(orderHeader.getId().intValue())))
                 .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
                 .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
-                .andExpect(jsonPath("$.[*].orderTotal").value(hasItem(DEFAULT_ORDER_TOTAL.doubleValue())));
+                .andExpect(jsonPath("$.[*].orderTotal").value(hasItem(DEFAULT_ORDER_TOTAL.doubleValue())))
+                .andExpect(jsonPath("$.[*].cookie").value(hasItem(DEFAULT_COOKIE.toString())));
     }
 
     @Test
@@ -193,7 +198,8 @@ public class OrderHeaderResourceIntTest {
             .andExpect(jsonPath("$.id").value(orderHeader.getId().intValue()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
-            .andExpect(jsonPath("$.orderTotal").value(DEFAULT_ORDER_TOTAL.doubleValue()));
+            .andExpect(jsonPath("$.orderTotal").value(DEFAULT_ORDER_TOTAL.doubleValue()))
+            .andExpect(jsonPath("$.cookie").value(DEFAULT_COOKIE.toString()));
     }
 
     @Test
@@ -216,6 +222,7 @@ public class OrderHeaderResourceIntTest {
         orderHeader.setType(UPDATED_TYPE);
         orderHeader.setStatus(UPDATED_STATUS);
         orderHeader.setOrderTotal(UPDATED_ORDER_TOTAL);
+        orderHeader.setCookie(UPDATED_COOKIE);
 
         restOrderHeaderMockMvc.perform(put("/api/orderHeaders")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -229,6 +236,7 @@ public class OrderHeaderResourceIntTest {
         assertThat(testOrderHeader.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testOrderHeader.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testOrderHeader.getOrderTotal()).isEqualTo(UPDATED_ORDER_TOTAL);
+        assertThat(testOrderHeader.getCookie()).isEqualTo(UPDATED_COOKIE);
     }
 
     @Test

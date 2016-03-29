@@ -43,6 +43,9 @@ public class OrderHeader implements Serializable {
     @Column(name = "order_total", nullable = false)
     private Double orderTotal;
     
+    @Column(name = "cookie")
+    private String cookie;
+    
     @ManyToOne
     @JoinColumn(name = "user_profile_id")
     private UserProfile userProfile;
@@ -93,6 +96,14 @@ public class OrderHeader implements Serializable {
     
     public void setOrderTotal(Double orderTotal) {
         this.orderTotal = orderTotal;
+    }
+
+    public String getCookie() {
+        return cookie;
+    }
+    
+    public void setCookie(String cookie) {
+        this.cookie = cookie;
     }
 
     public UserProfile getUserProfile() {
@@ -162,6 +173,7 @@ public class OrderHeader implements Serializable {
             ", type='" + type + "'" +
             ", status='" + status + "'" +
             ", orderTotal='" + orderTotal + "'" +
+            ", cookie='" + cookie + "'" +
             '}';
     }
 }

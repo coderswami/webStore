@@ -34,6 +34,7 @@ class="hidden-xs"                        translate="webstoreApp.orderHeader.home
                     <th><span translate="webstoreApp.orderHeader.type">Type</span></th>
                     <th><span translate="webstoreApp.orderHeader.status">Status</span></th>
                     <th><span translate="webstoreApp.orderHeader.orderTotal">OrderTotal</span></th>
+                    <th><span translate="webstoreApp.orderHeader.cookie">Cookie</span></th>
                     <th><span translate="webstoreApp.orderHeader.userProfile">userProfile</span></th>
                     <th><span translate="webstoreApp.orderHeader.payment">payment</span></th>
                     <th><span translate="webstoreApp.orderHeader.shipment">shipment</span></th>
@@ -46,6 +47,7 @@ class="hidden-xs"                        translate="webstoreApp.orderHeader.home
                     <td translate="{{'webstoreApp.OrderType.' + orderHeader.type}}">{{orderHeader.type}}</td>
                     <td translate="{{'webstoreApp.Status.' + orderHeader.status}}">{{orderHeader.status}}</td>
                     <td>{{orderHeader.orderTotal}}</td>
+                    <td>{{orderHeader.cookie}}</td>
                     <td>
                         <a ui-sref="userProfile.detail({id:orderHeader.userProfile.id})">{{orderHeader.userProfile.id}}</a>
                     </td>
