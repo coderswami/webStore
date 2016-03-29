@@ -3,6 +3,7 @@ package com.tl.webstore.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.tl.webstore.domain.OrderHeader;
 import com.tl.webstore.domain.enumeration.OrderType;
+import com.tl.webstore.domain.enumeration.Status;
 import com.tl.webstore.repository.OrderHeaderRepository;
 import com.tl.webstore.repository.search.OrderHeaderSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
@@ -49,11 +50,7 @@ public class OrderHeaderResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<OrderHeader> createOrderHeader(@Valid @RequestBody OrderHeader orderHeader, HttpServletRequest request) throws URISyntaxException {
-        System.out.println(request.getRemoteUser());
-        System.out.println(request.getRemoteAddr());
-        System.out.println(request.getRemoteHost());
-        System.out.println(request.getRemotePort());
+    public ResponseEntity<OrderHeader> createOrderHeader(@Valid @RequestBody OrderHeader orderHeader) throws URISyntaxException {
         log.debug("REST request to save OrderHeader : {}", orderHeader);
         if (orderHeader.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("orderHeader", "idexists", "A new orderHeader cannot already have an ID")).body(null);
@@ -72,10 +69,10 @@ public class OrderHeaderResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<OrderHeader> updateOrderHeader(@Valid @RequestBody OrderHeader orderHeader, HttpServletRequest request) throws URISyntaxException {
+    public ResponseEntity<OrderHeader> updateOrderHeader(@Valid @RequestBody OrderHeader orderHeader) throws URISyntaxException {
         log.debug("REST request to update OrderHeader : {}", orderHeader);
         if (orderHeader.getId() == null) {
-            return createOrderHeader(orderHeader, request);
+            return createOrderHeader(orderHeader);
         }
         OrderHeader result = orderHeaderRepository.save(orderHeader);
         orderHeaderSearchRepository.save(result);
@@ -106,6 +103,19 @@ public class OrderHeaderResource {
     public List<OrderHeader> getOrderHeadersByOrderType(@PathVariable String orderType) {
         log.debug("REST request to get OrderHeaders : {}", orderType);
         return orderHeaderRepository.findByType(OrderType.valueOf(orderType));
+    }
+
+    /**
+     * GET  /orderHeaders/type/cart/:cookie -> get all the orderHeaders.
+     */
+    @RequestMapping(value = "/orderHeaders/type/cart/{cookie}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<OrderHeader> getCartOrder(@PathVariable String cookie) {
+        log.debug("REST request to get OrderHeaders : {}", cookie);
+        OrderHeader orderHeader = orderHeaderRepository.findByTypeAndCookie(OrderType.CART, cookie);
+        return new ResponseEntity<>(orderHeader, HttpStatus.OK);
     }
 
     /**

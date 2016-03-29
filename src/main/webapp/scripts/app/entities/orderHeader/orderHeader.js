@@ -68,6 +68,7 @@ angular.module('webstoreApp')
                                     type: null,
                                     status: null,
                                     orderTotal: null,
+                                    cookie: null,
                                     id: null
                                 };
                             }

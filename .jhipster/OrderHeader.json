@@ -66,6 +66,11 @@
       "fieldValidateRules": [
         "required"
       ]
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "cookie",
+      "fieldType": "String"
     }
   ],
   "changelogDate": "20160326083043",

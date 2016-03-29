@@ -3,6 +3,8 @@ package com.tl.webstore.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.tl.webstore.domain.OrderHeader;
 import com.tl.webstore.domain.Shipment;
+import com.tl.webstore.domain.enumeration.OrderType;
+import com.tl.webstore.domain.enumeration.Status;
 import com.tl.webstore.repository.OrderHeaderRepository;
 import com.tl.webstore.repository.ShipmentRepository;
 import com.tl.webstore.repository.search.ShipmentSearchRepository;
@@ -57,10 +59,12 @@ public class ShipmentResource {
         if (shipment.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("shipment", "idexists", "A new shipment cannot already have an ID")).body(null);
         }
+        shipment.setStatus(Status.IN_PROCESS);
         Shipment result = shipmentRepository.save(shipment);
         shipmentSearchRepository.save(result);
         OrderHeader order = orderHeaderRepository.findOne(orderId);
         order.setShipment(result);
+        order.setType(OrderType.NEW);
         orderHeaderRepository.save(order);
         return ResponseEntity.created(new URI("/api/shipments/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("shipment", result.getId().toString()))

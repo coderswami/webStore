@@ -14,4 +14,6 @@ import java.util.List;
 public interface OrderHeaderRepository extends JpaRepository<OrderHeader,Long> {
 
     List<OrderHeader> findByType(OrderType type);
+
+    OrderHeader findByTypeAndCookie(OrderType type, String cookie);
 }

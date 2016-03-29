@@ -19,6 +19,7 @@
             "type": "Type",
             "status": "Status",
             "orderTotal": "OrderTotal",
+            "cookie": "Cookie",
             "userProfile": "UserProfile",
             "item": "Item",
             "payment": "Payment",
