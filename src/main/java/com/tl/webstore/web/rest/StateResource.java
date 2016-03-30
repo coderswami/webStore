@@ -2,6 +2,7 @@ package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.tl.webstore.domain.State;
+import com.tl.webstore.repository.CountryRepository;
 import com.tl.webstore.repository.StateRepository;
 import com.tl.webstore.repository.search.StateSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
@@ -31,13 +32,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class StateResource {
 
     private final Logger log = LoggerFactory.getLogger(StateResource.class);
-        
+
+    @Inject
+    private CountryRepository countryRepository;
+
     @Inject
     private StateRepository stateRepository;
-    
+
     @Inject
     private StateSearchRepository stateSearchRepository;
-    
+
     /**
      * POST  /states -> Create a new state.
      */
@@ -86,7 +90,19 @@ public class StateResource {
     public List<State> getAllStates() {
         log.debug("REST request to get all States");
         return stateRepository.findAll();
-            }
+    }
+
+    /**
+     * GET  /states/country/:countryId -> get all the states.
+     */
+    @RequestMapping(value = "/states/country/{countryId}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<State> getStatesByCountry(@PathVariable Long countryId) {
+        log.debug("REST request to get all States : {}", countryId);
+        return stateRepository.findByCountry(countryRepository.findOne(countryId));
+    }
 
     /**
      * GET  /states/:id -> get the "id" state.

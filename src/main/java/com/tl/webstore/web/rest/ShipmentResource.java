@@ -7,6 +7,7 @@ import com.tl.webstore.domain.enumeration.OrderType;
 import com.tl.webstore.domain.enumeration.Status;
 import com.tl.webstore.repository.OrderHeaderRepository;
 import com.tl.webstore.repository.ShipmentRepository;
+import com.tl.webstore.repository.UserProfileRepository;
 import com.tl.webstore.repository.search.ShipmentSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -64,7 +65,7 @@ public class ShipmentResource {
         shipmentSearchRepository.save(result);
         OrderHeader order = orderHeaderRepository.findOne(orderId);
         order.setShipment(result);
-        order.setType(OrderType.NEW);
+        order.setUserProfile(result.getAddress().getUserProfile());
         orderHeaderRepository.save(order);
         return ResponseEntity.created(new URI("/api/shipments/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("shipment", result.getId().toString()))

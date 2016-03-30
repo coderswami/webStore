@@ -17,74 +17,79 @@
         Added the entity.
     -->
     <changeSet id="1435300051311-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/country.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/country.csv"
 		separator=";" tableName="country">
 		</loadData>
 	</changeSet>
+    <changeSet id="1435300051312-3" author="subhankar">
+        <loadData encoding="UTF-8" file="config/liquibase/state.csv"
+                  separator=";" tableName="state">
+        </loadData>
+    </changeSet>
     <changeSet id="1435300051310-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/catalog.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/catalog.csv"
 		separator=";" tableName="catalog">
 		</loadData>
 	</changeSet>
 	<changeSet id="1435300051315-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/category.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/category.csv"
 		separator=";" tableName="category">
 		</loadData>
 	</changeSet>
 	 <changeSet id="1435300051314-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/product.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/product.csv"
 		separator=";" tableName="product">
 		</loadData>
 	</changeSet>
 	<changeSet id="1435300051317-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/currency.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/currency.csv"
 		separator=";" tableName="currency">
 		</loadData>
 	</changeSet>
 	<changeSet id="1435300051316-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/price.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/price.csv"
 		separator=";" tableName="product_price">
 		</loadData>
 	</changeSet>
 	<changeSet id="1435300051320-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/productattr.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/productattr.csv"
 		separator=";" tableName="product_attr">
 		</loadData>
 	</changeSet>
 	<changeSet id="1435300051327-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/userlogin.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/userlogin.csv"
 		separator=";" tableName="user_login">
 		</loadData>
 	</changeSet>
 	<changeSet id="1435300051326-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/userprofile.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/userprofile.csv"
 		separator=";" tableName="user_profile">
 		</loadData>
 	</changeSet>
 	<changeSet id="1435300051325-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/userrole.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/userrole.csv"
 		separator=";" tableName="user_role">
 		</loadData>
 	</changeSet>
 	<!-- <changeSet id="1435300051329-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/useraddress.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/useraddress.csv"
 		separator=";" tableName="user_address">
 		</loadData>
 	</changeSet> -->
 	<!-- <changeSet id="1435300051323-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/orderheader.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/orderheader.csv"
 		separator=";" tableName="order_header">
 		</loadData>
 	</changeSet> -->
 	<!-- <changeSet id="1435300051321-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/users.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/users.csv"
 		separator=";" tableName="jhi_user">
 		</loadData>
 	</changeSet>
 	<changeSet id="1435300051322-3" author="abhishek">
-		<loadData encoding="UTF-8" file="config/liquibase/review.csv" 
+		<loadData encoding="UTF-8" file="config/liquibase/review.csv"
 		separator=";" tableName="product_review">
 		</loadData>
 	</changeSet> -->
-	
+
 </databaseChangeLog>

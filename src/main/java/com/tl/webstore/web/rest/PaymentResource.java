@@ -3,6 +3,7 @@ package com.tl.webstore.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.tl.webstore.domain.OrderHeader;
 import com.tl.webstore.domain.Payment;
+import com.tl.webstore.domain.enumeration.OrderType;
 import com.tl.webstore.domain.enumeration.PaymentType;
 import com.tl.webstore.domain.enumeration.Status;
 import com.tl.webstore.repository.OrderHeaderRepository;
@@ -59,14 +60,10 @@ public class PaymentResource {
         if (payment.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("payment", "idexists", "A new payment cannot already have an ID")).body(null);
         }
-        if(payment.getType() != PaymentType.COD) {
-            payment.setStatus(Status.CONFIRMED);
-        }else {
-            payment.setStatus(Status.IN_PROCESS);
-        }
         Payment result = paymentRepository.save(payment);
         paymentSearchRepository.save(result);
         OrderHeader order = orderHeaderRepository.findOne(orderId);
+        order.setType(OrderType.NEW);
         order.setPayment(result);
         orderHeaderRepository.save(order);
         return ResponseEntity.created(new URI("/api/payments/" + result.getId()))
