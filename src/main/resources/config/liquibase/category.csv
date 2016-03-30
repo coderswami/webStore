@@ -1,7 +1,6 @@
 id;name;description;image_url;active;catalog_id;parent_id
 1;"Jeans";"Jeans";"/assets/images/nexus6-on.jpg";1;2;null
 2;"Shirts";"Shirts";"/assets/images/nexus9-on.jpg";1;2;null
-3;"Accessories";"Accessories";"/assets/images/wear-silver-on.jpg";1;2;null
-4;"Deodorant";"Watches";"/assets/images/wear-silver-on.jpg";1;2;3
-5;"Watches";"Wallets";"/assets/images/wear-silver-on.jpg";1;2;3
+3;"Deodorant";"Watches";"/assets/images/wear-silver-on.jpg";1;2;null
+4;"Watches";"Wallets";"/assets/images/wear-silver-on.jpg";1;2;null
 

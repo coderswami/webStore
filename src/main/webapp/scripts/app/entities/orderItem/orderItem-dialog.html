@@ -75,7 +75,7 @@
         </div>
         <div class="form-group">
             <label translate="webstoreApp.orderItem.product" for="field_product">product</label>
-            <select class="form-control" id="field_product" name="product" ng-model="orderItem.product" ng-options="product as product.id for product in products | orderBy:'id' track by product.id">
+            <select class="form-control" id="field_product" name="product" ng-model="orderItem.product" ng-options="product as product.id for product in products track by product.id">
                 <option value=""></option>
             </select>
         </div>

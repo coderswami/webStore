@@ -30,30 +30,29 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-
+    
     @NotNull
     @Column(name = "description", nullable = false)
     private String description;
-
+    
     @NotNull
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
-
+    
     @NotNull
     @Column(name = "inventory", nullable = false)
     private Integer inventory;
-
+    
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private Status status;
-
+    
     @NotNull
     @Column(name = "active", nullable = false)
     private Boolean active;
-
+    
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "category_id")
     private Category category;
 
@@ -83,7 +82,7 @@ public class Product implements Serializable {
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
@@ -91,7 +90,7 @@ public class Product implements Serializable {
     public String getDescription() {
         return description;
     }
-
+    
     public void setDescription(String description) {
         this.description = description;
     }
@@ -99,7 +98,7 @@ public class Product implements Serializable {
     public String getImageUrl() {
         return imageUrl;
     }
-
+    
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -107,7 +106,7 @@ public class Product implements Serializable {
     public Integer getInventory() {
         return inventory;
     }
-
+    
     public void setInventory(Integer inventory) {
         this.inventory = inventory;
     }
@@ -115,7 +114,7 @@ public class Product implements Serializable {
     public Status getStatus() {
         return status;
     }
-
+    
     public void setStatus(Status status) {
         this.status = status;
     }
@@ -123,7 +122,7 @@ public class Product implements Serializable {
     public Boolean getActive() {
         return active;
     }
-
+    
     public void setActive(Boolean active) {
         this.active = active;
     }

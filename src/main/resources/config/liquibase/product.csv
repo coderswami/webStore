@@ -7,14 +7,14 @@ id;name;description;image_url;inventory;status;active;category_id
 6;"Levis";"Mens Check Shirt";"/assets/images/levis-2-shirt-checked-men-detailview.jpeg";11;AVAILABLE;1;2
 7;"Levis";"Mens Slim Fit Shirt";"/assets/images/men-shirt-peter-england-detailview.jpeg";17;AVAILABLE;1;2
 8;"Puma";"Mens Apple Cut Shirt";"/assets/images/puma-shirt-men-detailview.jpeg";15;AVAILABLE;1;2
-9;"Fastrack";"Mens Wrist Watch Chain Strap";"/assets/images/fastrack-detailview.jpeg";16;AVAILABLE;1;5
-10;"Rolex";"Mens Gold Plated Watch ";"/assets/images/rolex-deatilview.jpeg";15;AVAILABLE;1;5
-11;"Timex";"Mens Fancy Watch";"/assets/images/timex-watch-detailview.jpeg";15;AVAILABLE;1;5
-12;"Timex";"Womens Fancy Watch";"/assets/images/timex-women-watch-detailview.jpeg";15;AVAILABLE;1;5
-13;"Gucci";"Mens Deo Pleasant";"/assets/images/gucci-deo-detailview.jpeg";16;AVAILABLE;1;4
-14;"Gucci";"Mens Black Collection Deo";"/assets/images/gucci-black-detailview.jpeg";14;AVAILABLE;1;4
-15;"Polo";"Mens Polo Green Deo";"/assets/images/polo-green-deo-detailview.jpeg";11;AVAILABLE;1;4
-16;"Polo";"Womens Polo Deo";"/assets/images/polo-red-detailview.jpeg";10;AVAILABLE;1;4
+9;"Fastrack";"Mens Wrist Watch Chain Strap";"/assets/images/fastrack-detailview.jpeg";16;AVAILABLE;1;4
+10;"Rolex";"Mens Gold Plated Watch ";"/assets/images/rolex-deatilview.jpeg";15;AVAILABLE;1;4
+11;"Timex";"Mens Fancy Watch";"/assets/images/timex-watch-detailview.jpeg";15;AVAILABLE;1;4
+12;"Timex";"Womens Fancy Watch";"/assets/images/timex-women-watch-detailview.jpeg";15;AVAILABLE;1;4
+13;"Gucci";"Mens Deo Pleasant";"/assets/images/gucci-deo-detailview.jpeg";16;AVAILABLE;1;3
+14;"Gucci";"Mens Black Collection Deo";"/assets/images/gucci-black-detailview.jpeg";14;AVAILABLE;1;3
+15;"Polo";"Mens Polo Green Deo";"/assets/images/polo-green-deo-detailview.jpeg";11;AVAILABLE;1;3
+16;"Polo";"Womens Polo Deo";"/assets/images/polo-red-detailview.jpeg";10;AVAILABLE;1;3
 
 
 

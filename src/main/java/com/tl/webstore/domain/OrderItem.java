@@ -43,7 +43,8 @@ public class OrderItem implements Serializable {
     @JoinColumn(name = "order_header_id")
     private OrderHeader orderHeader;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
     public Long getId() {

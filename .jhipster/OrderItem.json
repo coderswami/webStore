@@ -9,12 +9,10 @@
     },
     {
       "relationshipId": 2,
-      "relationshipType": "one-to-one",
+      "relationshipType": "many-to-one",
       "relationshipName": "product",
       "otherEntityName": "product",
-      "otherEntityField": "id",
-      "ownerSide": true,
-      "otherEntityRelationshipName": "orderItem"
+      "otherEntityField": "id"
     }
   ],
   "fields": [

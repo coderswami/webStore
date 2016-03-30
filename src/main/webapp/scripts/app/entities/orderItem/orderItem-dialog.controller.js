@@ -1,20 +1,12 @@
 'use strict';
 
 angular.module('webstoreApp').controller('OrderItemDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'OrderItem', 'OrderHeader', 'Product',
-        function($scope, $stateParams, $uibModalInstance, $q, entity, OrderItem, OrderHeader, Product) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'OrderItem', 'OrderHeader', 'Product',
+        function($scope, $stateParams, $uibModalInstance, entity, OrderItem, OrderHeader, Product) {
 
         $scope.orderItem = entity;
         $scope.orderheaders = OrderHeader.query();
-        $scope.products = Product.query({filter: 'orderitem-is-null'});
-        $q.all([$scope.orderItem.$promise, $scope.products.$promise]).then(function() {
-            if (!$scope.orderItem.product || !$scope.orderItem.product.id) {
-                return $q.reject();
-            }
-            return Product.get({id : $scope.orderItem.product.id}).$promise;
-        }).then(function(product) {
-            $scope.products.push(product);
-        });
+        $scope.products = Product.query();
         $scope.load = function(id) {
             OrderItem.get({id : id}, function(result) {
                 $scope.orderItem = result;

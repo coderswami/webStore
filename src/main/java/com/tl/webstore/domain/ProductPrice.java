@@ -4,8 +4,6 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -29,19 +27,18 @@ public class ProductPrice implements Serializable {
     @NotNull
     @Column(name = "list_price", nullable = false)
     private Double listPrice;
-
+    
     @Column(name = "discount")
     private Double discount;
-
+    
     @Column(name = "sales_price")
     private Double salesPrice;
-
+    
     @NotNull
     @Column(name = "active", nullable = false)
     private Boolean active;
-
+    
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "product_id")
     private Product product;
 
@@ -60,7 +57,7 @@ public class ProductPrice implements Serializable {
     public Double getListPrice() {
         return listPrice;
     }
-
+    
     public void setListPrice(Double listPrice) {
         this.listPrice = listPrice;
     }
@@ -68,7 +65,7 @@ public class ProductPrice implements Serializable {
     public Double getDiscount() {
         return discount;
     }
-
+    
     public void setDiscount(Double discount) {
         this.discount = discount;
     }
@@ -76,7 +73,7 @@ public class ProductPrice implements Serializable {
     public Double getSalesPrice() {
         return salesPrice;
     }
-
+    
     public void setSalesPrice(Double salesPrice) {
         this.salesPrice = salesPrice;
     }
@@ -84,7 +81,7 @@ public class ProductPrice implements Serializable {
     public Boolean getActive() {
         return active;
     }
-
+    
     public void setActive(Boolean active) {
         this.active = active;
     }
