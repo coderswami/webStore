@@ -1,7 +1,9 @@
 package com.tl.webstore.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.tl.webstore.domain.UserLogin;
 import com.tl.webstore.domain.UserProfile;
+import com.tl.webstore.repository.UserLoginRepository;
 import com.tl.webstore.repository.UserProfileRepository;
 import com.tl.webstore.repository.search.UserProfileSearchRepository;
 import com.tl.webstore.web.rest.util.HeaderUtil;
@@ -32,13 +34,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class UserProfileResource {
 
     private final Logger log = LoggerFactory.getLogger(UserProfileResource.class);
-        
+
+    @Inject
+    private UserLoginRepository userLoginRepository;
+
     @Inject
     private UserProfileRepository userProfileRepository;
-    
+
     @Inject
     private UserProfileSearchRepository userProfileSearchRepository;
-    
+
     /**
      * POST  /userProfiles -> Create a new userProfile.
      */
@@ -51,6 +56,11 @@ public class UserProfileResource {
         if (userProfile.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("userProfile", "idexists", "A new userProfile cannot already have an ID")).body(null);
         }
+        UserLogin logindetails = new UserLogin();
+        logindetails.setUsername(userProfile.getEmail());
+        logindetails.setPassword(userProfile.getFname());
+        logindetails = userLoginRepository.save(logindetails);
+        userProfile.setAuthentication(logindetails);
         UserProfile result = userProfileRepository.save(userProfile);
         userProfileSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/userProfiles/" + result.getId()))
