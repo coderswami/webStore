@@ -44,12 +44,8 @@
             </column>
             
             <column name="user_profile_id" type="bigint"/>
-            <column name="country_id" type="bigint">
-                <constraints unique="true"/>
-            </column>
-            <column name="state_id" type="bigint">
-                <constraints unique="true"/>
-            </column>
+            <column name="country_id" type="bigint"/>
+            <column name="state_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         

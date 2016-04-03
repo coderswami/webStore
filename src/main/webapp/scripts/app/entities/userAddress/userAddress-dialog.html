@@ -88,13 +88,13 @@
         </div>
         <div class="form-group">
             <label translate="webstoreApp.userAddress.country" for="field_country">country</label>
-            <select class="form-control" id="field_country" name="country" ng-model="userAddress.country" ng-options="country as country.id for country in countrys | orderBy:'id' track by country.id">
+            <select class="form-control" id="field_country" name="country" ng-model="userAddress.country" ng-options="country as country.id for country in countrys track by country.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label translate="webstoreApp.userAddress.state" for="field_state">state</label>
-            <select class="form-control" id="field_state" name="state" ng-model="userAddress.state" ng-options="state as state.id for state in states | orderBy:'id' track by state.id">
+            <select class="form-control" id="field_state" name="state" ng-model="userAddress.state" ng-options="state as state.id for state in states track by state.id">
                 <option value=""></option>
             </select>
         </div>

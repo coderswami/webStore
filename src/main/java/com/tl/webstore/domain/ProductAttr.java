@@ -1,6 +1,5 @@
 package com.tl.webstore.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -28,16 +27,15 @@ public class ProductAttr implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-
+    
     @Column(name = "description")
     private String description;
-
+    
     @NotNull
     @Column(name = "value", nullable = false)
     private String value;
-
+    
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "product_id")
     private Product product;
 
@@ -52,7 +50,7 @@ public class ProductAttr implements Serializable {
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
@@ -60,7 +58,7 @@ public class ProductAttr implements Serializable {
     public String getDescription() {
         return description;
     }
-
+    
     public void setDescription(String description) {
         this.description = description;
     }
@@ -68,7 +66,7 @@ public class ProductAttr implements Serializable {
     public String getValue() {
         return value;
     }
-
+    
     public void setValue(String value) {
         this.value = value;
     }

@@ -9,21 +9,17 @@
     },
     {
       "relationshipId": 2,
-      "relationshipType": "one-to-one",
+      "relationshipType": "many-to-one",
       "relationshipName": "country",
       "otherEntityName": "country",
-      "otherEntityField": "id",
-      "ownerSide": true,
-      "otherEntityRelationshipName": "userAddress"
+      "otherEntityField": "id"
     },
     {
       "relationshipId": 3,
-      "relationshipType": "one-to-one",
+      "relationshipType": "many-to-one",
       "relationshipName": "state",
       "otherEntityName": "state",
-      "otherEntityField": "id",
-      "ownerSide": true,
-      "otherEntityRelationshipName": "userAddress"
+      "otherEntityField": "id"
     }
   ],
   "fields": [

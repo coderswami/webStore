@@ -28,19 +28,18 @@ public class Category implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-
+    
     @Column(name = "description")
     private String description;
-
+    
     @Column(name = "image_url")
     private String imageUrl;
-
+    
     @NotNull
     @Column(name = "active", nullable = false)
     private Boolean active;
-
+    
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "catalog_id")
     private Catalog catalog;
 
@@ -64,7 +63,7 @@ public class Category implements Serializable {
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
@@ -72,7 +71,7 @@ public class Category implements Serializable {
     public String getDescription() {
         return description;
     }
-
+    
     public void setDescription(String description) {
         this.description = description;
     }
@@ -80,7 +79,7 @@ public class Category implements Serializable {
     public String getImageUrl() {
         return imageUrl;
     }
-
+    
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -88,7 +87,7 @@ public class Category implements Serializable {
     public Boolean getActive() {
         return active;
     }
-
+    
     public void setActive(Boolean active) {
         this.active = active;
     }

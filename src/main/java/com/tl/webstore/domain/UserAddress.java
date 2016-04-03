@@ -51,10 +51,12 @@ public class UserAddress implements Serializable {
     @JoinColumn(name = "user_profile_id")
     private UserProfile userProfile;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "country_id")
     private Country country;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "state_id")
     private State state;
 
     public Long getId() {
